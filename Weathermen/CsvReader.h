@@ -4,15 +4,15 @@
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
+#include <vector>
 
 using namespace std;
 
 class CsvReader{
-	private:
-
 	public:
-		CsvReader();
 		void readFile(string file_name);
+		std::vector<std::string> findName(string file_name, string name);
+		std::vector<std::string> split(const std::string &s, char delim);
 };
 
 #endif

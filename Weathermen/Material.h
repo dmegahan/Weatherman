@@ -15,21 +15,20 @@ class Material{
 
 	public:
 		Material();
-		Material(string name, string description, string type);
-		Material(FILE *file);
+		Material(string mat_name);
+		Material(string name, string description, string type, int *color[4]);
 
 		void setName(string name){ material_name = name; }
 		void setDescription(string description){ material_description = description; }
 		void setType(string type){ material_type = type; }
 		
 		void setColor();
+		void setColor(int R, int G, int B, int A);
 		int* getColor(){ return color; }
 
 		string getName(){ return material_name; }
 		string getDescription(){ return material_description; }
 		string getType(){ return material_type; }
-
-
 };
 
 #endif

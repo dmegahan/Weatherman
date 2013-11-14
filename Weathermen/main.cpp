@@ -8,6 +8,9 @@
 
 #include "Tile.h"
 #include "Actor.h"
+#include "Material.h"
+#include "CsvReader.h"
+#include "Item.h"
 
 using namespace std;
 
