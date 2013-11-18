@@ -30,7 +30,7 @@ Tile::Tile(){
 
 Tile::Tile(string type, string material, int height, string name, string description, bool passable){
 	setType(type);
-	setMaterial(material);
+	setMaterial(Material(material));
 	setHeight(height);
 	setName(name);
 	setDescription(description);
@@ -39,20 +39,10 @@ Tile::Tile(string type, string material, int height, string name, string descrip
 }
 
 void Tile::setColor(){
-	/*
-		Should be replaced with reading from XML file soon
-	*/
-	if (this->getMaterial().compare("GRASS") == 0){
-		this->color[0] = 0;
-		this->color[1] = 5;
-		this->color[2] = 0;
-		this->color[3] = 0;
-	}else if (this->getMaterial().compare("ROCK") == 0){
-		this->color[0] = 5;
-		this->color[1] = 5;
-		this->color[2] = 5;
-		this->color[3] = 0;
-	}
+	this->color[0] = getMaterial().getColor()[0];
+	this->color[1] = getMaterial().getColor()[1];
+	this->color[2] = getMaterial().getColor()[2];
+	this->color[3] = getMaterial().getColor()[3];
 }
 
 void Tile::removeActor(Actor *actor){

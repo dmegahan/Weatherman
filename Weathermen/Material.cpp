@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <msxml6.h>
+#include <string>
 
 #include "Material.h"
 #include "CsvReader.h"
@@ -25,6 +26,13 @@ Material::Material(){
 Material::Material(string mat_name){
 	CsvReader csvReader;
 	vector<string> fields = csvReader.findName("MATERIALS.csv", mat_name);
+	setName(fields[0]);
+	setDescription(fields[1]);
+	setType(fields[2]);
+	setColor(atoi(fields[3].c_str()), 
+			 atoi(fields[4].c_str()), 
+			 atoi(fields[5].c_str()), 
+			 atoi(fields[6].c_str()));
 }
 
 Material::Material(string name, string description, string type, int *color[4]){
@@ -41,4 +49,10 @@ void Material::setColor(int R, int G, int B, int A){
 }
 void Material::setColor(){
 
+}
+
+void Material::toString(){
+	cout << "Name: " << getName() << endl;
+	cout << "Description: " << getDescription() << endl;
+	cout << "Type: " << getType() << endl;
 }

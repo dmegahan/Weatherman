@@ -29,6 +29,8 @@ class Material{
 		string getName(){ return material_name; }
 		string getDescription(){ return material_description; }
 		string getType(){ return material_type; }
+
+		void toString();
 };
 
 #endif

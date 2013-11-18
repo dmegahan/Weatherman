@@ -34,20 +34,22 @@ std::vector<std::string> CsvReader::findName(string file_name, string name){
 		cerr << "Failure to open " + file_name << endl;
 		exit(1);
 	}
+	//skip first line
 	getline(file, value);
 	string field;
 	//find first ,
-	int first_delim = value.find_first_of(',');
-	while(file.good()){
-		//get entire line
-		getline(file, value, '\n');
+	int first_delim;
+	while(getline(file, value,'\n')){
+		first_delim = value.find_first_of(',');
 		//get name by first ,
 		field = value.substr(0, first_delim);
 		//if field = name, by value
 		if(field.compare(name) == 0){
+			file.close();
 			return split(value, ',');
 		}
 	}
+	file.close();
 	vector<string> empty_vector;
 	return empty_vector;
 }

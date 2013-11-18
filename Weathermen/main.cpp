@@ -36,9 +36,9 @@ Tile** createMap(){
 	for (int i=0; i<MAP_SIZEX; i++){
 		for (int j=0; j<MAP_SIZEY; j++){
 			if (i%2==0 && j%2==0){
-				map[i][j] = Tile("WALL", "ROCK", 2, "ROCK WALL", "ROCK WALL", false);
+				map[i][j] = Tile("WALL", "Iron", 2, "ROCK WALL", "ROCK WALL", false);
 			}else{
-				map[i][j] = Tile("GRASS", "GRASS", 0, "GRASS", "GRASS", true);
+				map[i][j] = Tile("GRASS", "Grass", 0, "GRASS", "GRASS", true);
 			}
 		}
 	}

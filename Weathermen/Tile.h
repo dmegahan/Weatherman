@@ -5,8 +5,10 @@
 #include <GL/glut.h>
 #include <stdio.h>
 #include <vector>
+
 #include "Actor.h"
 #include "Item.h"
+#include "Material.h"
 
 using namespace std;
 
@@ -17,7 +19,7 @@ class Tile
 		bool is_passable;
 		string name;
 		string description;
-		string terrain_material;
+		Material terrain_material;
 		int height;
 		std::vector<Actor*> contains_actors;
 		std::vector<Item*> contains_items;
@@ -42,7 +44,7 @@ class Tile
 		void setPassable(bool passable){ is_passable = passable; }
 		void setName(string tile_name){ name = tile_name; }
 		void setDescription(string tile_description){ description = tile_description; }
-		void setMaterial(string material){ terrain_material = material; }
+		void setMaterial(Material material){ terrain_material = material; }
 		void setHeight(int tile_height){ height = tile_height; }
 
 		vector<Actor*> getActors(){ return contains_actors; }
@@ -51,7 +53,7 @@ class Tile
 		bool isPassable(){ return is_passable; }
 		string getName(){ return name; }
 		string getDescription(){ return description; }
-		string getMaterial(){ return terrain_material; }
+		Material getMaterial(){ return terrain_material; }
 		int getHeight(){ return height; }
 };
 
