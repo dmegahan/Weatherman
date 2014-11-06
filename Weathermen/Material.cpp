@@ -29,10 +29,10 @@ Material::Material(string mat_name){
 	setName(fields[0]);
 	setDescription(fields[1]);
 	setType(fields[2]);
-	setColor(atoi(fields[3].c_str()), 
-			 atoi(fields[4].c_str()), 
-			 atoi(fields[5].c_str()), 
-			 atoi(fields[6].c_str()));
+	setColor(atof(fields[3].c_str()), 
+			 atof(fields[4].c_str()), 
+			 atof(fields[5].c_str()), 
+			 atof(fields[6].c_str()));
 }
 
 Material::Material(string name, string description, string type, int *color[4]){
@@ -41,7 +41,7 @@ Material::Material(string name, string description, string type, int *color[4]){
 	setType(type);
 }
 
-void Material::setColor(int R, int G, int B, int A){
+void Material::setColor(float R, float G, float B, float A){
 	this->color[0] = R;
 	this->color[1] = G;
 	this->color[2] = B;

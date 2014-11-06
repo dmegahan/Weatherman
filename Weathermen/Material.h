@@ -11,7 +11,7 @@ class Material{
 		string material_name;
 		string material_description;
 		string material_type;
-		int color[4];
+		float color[4];
 
 	public:
 		Material();
@@ -23,8 +23,8 @@ class Material{
 		void setType(string type){ material_type = type; }
 		
 		void setColor();
-		void setColor(int R, int G, int B, int A);
-		int* getColor(){ return color; }
+		void setColor(float R, float G, float B, float A);
+		float* getColor(){ return color; }
 
 		string getName(){ return material_name; }
 		string getDescription(){ return material_description; }

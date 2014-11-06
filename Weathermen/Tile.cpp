@@ -26,6 +26,11 @@ int getHeight();
 Tile::Tile(){
 	setType("ROCK");
 	setColor();
+	default_character = '#';
+	current_character = default_character;
+
+	VISIBLE = false;
+	discovered = false;
 }
 
 Tile::Tile(string type, string material, int height, string name, string description, bool passable){
@@ -36,6 +41,18 @@ Tile::Tile(string type, string material, int height, string name, string descrip
 	setDescription(description);
 	setPassable(passable);
 	setColor();
+
+	if (this->getType().compare("GRASS") == 0){
+		default_character = ',';
+		current_character = default_character;
+	}
+	else if (this->getType().compare("WALL") == 0){
+		default_character = '#';
+		current_character = default_character;
+	}
+
+	VISIBLE = false;
+	discovered = false;
 }
 
 void Tile::setColor(){
@@ -55,7 +72,7 @@ void Tile::removeActor(Actor *actor){
 	//if no actors, set passable to default
 	if (contains_actors.empty()){
 		this->setPassable(true);
-	}	
+	}
 }
 
 bool Tile::hasActor(Actor *actor){
@@ -76,6 +93,7 @@ void Tile::addActor(Actor *actor){
 }
 
 void Tile::spawnActor(){
+	//filler for now, probably should move this out to an action or another case of classes
 	Actor *newActor = new Actor();
 	this->addActor(newActor);
 }
@@ -117,4 +135,19 @@ bool Tile::isEmpty(){
 		is_empty = false;
 	}
 	return is_empty;
+}
+
+void Tile::setCharacter(){
+	if (getType().compare("GRASS") == 0){
+		current_character = ',';
+	}
+	else if (getType().compare("WALL") == 0){
+		current_character = '#';
+	}
+	if (getItems().size() > 0){
+		current_character = getItems()[0]->getSymbol();
+	}
+	if (!isEmpty()){
+		current_character = getActors()[0]->getSymbol();
+	}
 }

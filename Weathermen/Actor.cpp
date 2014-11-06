@@ -22,7 +22,22 @@ Actor::Actor(){
 	setColor();
 }
 
-Actor::Actor(string name, string description, string type, char symbol){
+Actor::Actor(int _x, int _y){
+	x = _x;
+	y = _y;
+
+	setName("");
+	setDescription("");
+	setSymbol('%');
+	setType("Actor");
+	setColor();
+}
+
+
+Actor::Actor(int _x, int _y, string name, string description, string type, char symbol){
+	x = _x;
+	y = _y;
+
 	setName(name);
 	setDescription(description);
 	setType(type);

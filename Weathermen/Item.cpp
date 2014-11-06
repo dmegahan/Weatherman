@@ -29,16 +29,8 @@ Item::Item(string name, string description, string material, char symbol){
 }
 
 void Item::setColor(){
-	if (this->getMaterial().compare("GRASS") == 0){
-		this->color[0] = 0;
-		this->color[1] = 5;
-		this->color[2] = 0;
-		this->color[3] = 0;
-	}else if (this->getMaterial().compare("ROCK") == 0){
-		this->color[0] = 5;
-		this->color[1] = 5;
-		this->color[2] = 5;
-		this->color[3] = 0;
-	}
-
+	this->color[0] = getMaterial().getColor()[0];
+	this->color[1] = getMaterial().getColor()[1];
+	this->color[2] = getMaterial().getColor()[2];
+	this->color[3] = getMaterial().getColor()[3];
 }

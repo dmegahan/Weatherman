@@ -1,8 +1,6 @@
 #ifndef TILE_H
 #define TILE_H
 
-#include <GL/glew.h>
-#include <GL/glut.h>
 #include <stdio.h>
 #include <vector>
 
@@ -21,10 +19,16 @@ class Tile
 		string description;
 		Material terrain_material;
 		int height;
-		std::vector<Actor*> contains_actors;
-		std::vector<Item*> contains_items;
-		int color [4];
+
+		vector<Actor*> contains_actors;
+		vector<Item*> contains_items;
+		float color [4];
 	public:
+		bool VISIBLE;
+		bool discovered;
+		char default_character;
+		char current_character;
+
 		Tile();
 		Tile(string type, string material, int height, string name, string description, bool passable);
 		void removeActor(Actor *actor);
@@ -38,7 +42,7 @@ class Tile
 		void addItem(Item *item);
 
 		void setColor();
-		int * getColor(){ return color; }
+		float * getColor(){ return color; }
 
 		void setType(string type){ terrain_type = type; }
 		void setPassable(bool passable){ is_passable = passable; }
@@ -55,6 +59,8 @@ class Tile
 		string getDescription(){ return description; }
 		Material getMaterial(){ return terrain_material; }
 		int getHeight(){ return height; }
+
+		void setCharacter();
 };
 
 #endif
