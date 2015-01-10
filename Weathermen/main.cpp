@@ -117,18 +117,22 @@ void keyOperations(void) {
 	//then execute that queue (AI will add moves to it as well) and update map and call display
 	if (keyStates['w']) {
 		map.newMove(player->x, player->y, player->x, player->y - 1);
+		player->actionEffects();
 		cout << "w pressed!";
 	}
 	else if (keyStates['a']){
 		map.newMove(player->x, player->y, player->x - 1, player->y);
+		player->actionEffects();
 		cout << "a pressed!";
 	}
 	else if (keyStates['s']){
 		map.newMove(player->x, player->y, player->x, player->y + 1);
+		player->actionEffects();
 		cout << "s pressed!";
 	}
 	else if (keyStates['d']){
 		map.newMove(player->x, player->y, player->x + 1, player->y);
+		player->actionEffects();
 		cout << "d pressed!";
 	}
 	else if (keyStates['z']){

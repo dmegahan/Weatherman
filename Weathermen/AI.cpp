@@ -47,7 +47,9 @@ void AI::nextAction(){
 	if (moveable_tiles.size() > 0){
 		std::array<int, 2> pos = moveable_tiles.at(rand() % moveable_tiles.size());
 		map->newMove(actor->x, actor->y, pos[0], pos[1]);
+		actor->actionEffects();
 	}
+	actor->actionEffects();
 }
 
 void AI::behavior(){

@@ -29,6 +29,9 @@ class Actor{
 		int CHR; 
 		int PER;
 
+		int hunger;
+		int thirst;
+
 		int view_radius;
 
 		Actor();
@@ -42,6 +45,8 @@ class Actor{
 		
 		void initializeStats();
 		void randomizeStats(int max_points);
+
+		void actionEffects(int energy_expended = 0);
 		
 		void setColor();
 		float * getColor(){ return color; }

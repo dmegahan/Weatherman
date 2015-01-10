@@ -41,6 +41,7 @@ Actor::Actor(int _x, int _y){
 	setType("Actor");
 	setColor();
 
+	//70 possible points, halve that - 7 gets 28. enough for 5s across the board
 	base_stats = 28;
 
 	initializeStats();
@@ -91,6 +92,9 @@ void Actor::initializeStats(){
 	DEX = 1;
 	CHR = 1;
 	PER = 1;
+
+	hunger = 50;
+	thirst = 50;
 }
 
 void Actor::randomizeStats(int max_points){
@@ -111,7 +115,7 @@ void Actor::randomizeStats(int max_points){
 	while (spent_points != max_points){
 		int rand_stat = rand() % stats.size();
 		int rand_points_given = rand() % 2 + 1;
-		printf("Stat: %d, Points to be given: %d\n", rand_stat, rand_points_given);
+		//printf("Stat: %d, Points to be given: %d\n", rand_stat, rand_points_given);
 		if ((*stats[rand_stat] + rand_points_given) <= 10){
 			*stats[rand_stat] = *stats[rand_stat] + rand_points_given;
 			spent_points = spent_points + rand_points_given;
@@ -128,4 +132,16 @@ void Actor::randomizeStats(int max_points){
 			return;
 		}
 	}
+}
+
+/*
+	Not the best name, but actionEffects will degrade stats like hunger and thirst ever time its called, as well as
+	check the status of the character, including health, sickness, stamina 
+
+	each action will have a certain amount of energy attached to it, and that will affect how fast you lose hunger/thirst, and affect
+	other status effectsThis 
+*/
+void Actor::actionEffects(int energy_expended){
+	hunger = hunger - 1;
+	thirst = thirst - 1;
 }
