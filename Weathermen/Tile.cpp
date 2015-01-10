@@ -62,6 +62,13 @@ void Tile::setColor(){
 	this->color[3] = getMaterial().getColor()[3];
 }
 
+void Tile::setColor(int r, int g, int b, int a){
+	this->color[0] = r;
+	this->color[1] = g;
+	this->color[2] = b;
+	this->color[3] = a;
+}
+
 void Tile::removeActor(Actor *actor){
 	//attempts to find actor in contains_actors
 	for(int i = 0; i < this->contains_actors.size(); i++){
@@ -127,6 +134,10 @@ void Tile::spawnItem(){
 	this->addItem(newItem);
 }
 
+/*
+	Tile::isEmpty() -
+	returns true is there are no actors on that tile
+*/
 bool Tile::isEmpty(){
 	bool is_empty = false;
 	if (this->getActors().empty()){

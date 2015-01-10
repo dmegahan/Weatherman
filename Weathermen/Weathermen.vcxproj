@@ -78,6 +78,7 @@
   <ItemGroup>
     <ClInclude Include="Action.h" />
     <ClInclude Include="Actor.h" />
+    <ClInclude Include="AI.h" />
     <ClInclude Include="CsvReader.h" />
     <ClInclude Include="GlutClass.h" />
     <ClInclude Include="Item.h" />
@@ -89,6 +90,7 @@
   <ItemGroup>
     <ClCompile Include="Action.cpp" />
     <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="AI.cpp" />
     <ClCompile Include="CsvReader.cpp" />
     <ClCompile Include="GlutClass.cpp" />
     <ClCompile Include="Item.cpp" />

@@ -20,11 +20,15 @@ Actor::Actor(){
 	setSymbol('%');
 	setType("Actor");
 	setColor();
+
+	view_radius = 5;
 }
 
 Actor::Actor(int _x, int _y){
 	x = _x;
 	y = _y;
+
+	view_radius = 5;
 
 	setName("");
 	setDescription("");
@@ -37,6 +41,8 @@ Actor::Actor(int _x, int _y){
 Actor::Actor(int _x, int _y, string name, string description, string type, char symbol){
 	x = _x;
 	y = _y;
+
+	view_radius = 5;
 
 	setName(name);
 	setDescription(description);

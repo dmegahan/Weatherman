@@ -42,6 +42,7 @@ class Tile
 		void addItem(Item *item);
 
 		void setColor();
+		void setColor(int r, int g, int b, int a);
 		float * getColor(){ return color; }
 
 		void setType(string type){ terrain_type = type; }

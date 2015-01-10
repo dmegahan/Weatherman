@@ -11,11 +11,14 @@
 #include "Action.h"
 #include "Move.h"
 #include "GlutClass.h"
+#include "AI.h"
+
+#include <process.h>
 
 using namespace std;
 
-#define MAP_SIZEX 15
-#define MAP_SIZEY 15
+#define MAP_SIZEX 50
+#define MAP_SIZEY 50
 
 #define VIEW_RADIUS 5
 
@@ -23,6 +26,7 @@ int playerX, playerY;
 Map map;
 GlutClass glutClass;
 vector<Actor*> all_actors;
+vector<AI*> all_AI;
 
 bool keyStates[256] = {false};
 
@@ -44,6 +48,7 @@ void display(){
 	glutSwapBuffers();
 	glFlush();
 }
+
 void idle(){
 	glutPostRedisplay();
 }
@@ -62,7 +67,7 @@ void DoFOV(float x, float y){
 	float ox, oy;
 	ox = (float)player->x + 0.5f;
 	oy = (float)player->y + 0.5f;
-	for (i = 0; i < VIEW_RADIUS; i++){
+	for (i = 0; i < player->view_radius; i++){
 		Tile* tile = map.getTileAtPos((int)ox, (int)oy);
 		if (tile != nullptr){
 			tile->VISIBLE = true;
@@ -92,6 +97,19 @@ void FOV(){
 	}
 }
 
+/*
+	Threaded function that will calculate all the actions of the 
+	NPC AI and send them to map to be executed.
+*/
+void AIActions(void *arg){
+	for (int i = 0; i < all_AI.size(); i++){
+		AI *ai = all_AI[i];
+		ai->nextAction();
+	}
+}
+
+
+
 void keyOperations(void) {
 	//def needs cleanup, keys pressed should call a certain method/object (aka movement object that calls execute)
 
@@ -117,13 +135,8 @@ void keyOperations(void) {
 		cout << "z pressed!";
 	}
 
-	for (int i = 0; i < all_actors.size(); i++){
-		Actor *actor = all_actors[i];
-		map.newMove(actor->x, actor->y, actor->x + 1, actor->y);
-
-	}
-
 	map.executeQueue();
+	HANDLE hThread = (HANDLE)_beginthread(AIActions, 0, 0);
 	FOV();
 }	
 
@@ -142,10 +155,10 @@ int main(int argc, char **argv){
 
 	glutIgnoreKeyRepeat(1);
 
-	playerX = 5;
-	playerY = 3;
+	player = new Actor(1, 3, "PC", "Player Character", "PLAYER", '@');
 
-	player = new Actor(5, 3, "PC", "Player Character", "PLAYER", '@');
+	playerX = player->x;
+	playerY = player->y;
 
 	//all_actors.push_back(player);
 
@@ -157,9 +170,11 @@ int main(int argc, char **argv){
 	map.getTileAtPos(0, 3)->spawnItem();
 
 	Actor *test = new Actor(1, 1, "Dave", "Dave", "Dave", 'D');
+	AI *test_AI = new AI(test, &map);
 	map.getTileAtPos(test->x, test->y)->addActor(test);
 
 	all_actors.push_back(test);
+	all_AI.push_back(test_AI);
 
 	FOV();
 

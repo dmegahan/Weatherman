@@ -18,6 +18,7 @@ class Actor{
 	public:
 		int x;
 		int y;
+		int view_radius;
 
 		Actor();
 		Actor(int _x, int _y);
