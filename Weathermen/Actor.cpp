@@ -1,6 +1,7 @@
 #include <vector>
 #include <stdio.h>
 #include <iostream>
+#include <time.h>
 
 #include "Actor.h"
 
@@ -21,7 +22,11 @@ Actor::Actor(){
 	setType("Actor");
 	setColor();
 
+	base_stats = 28;
+
 	view_radius = 5;
+
+	initializeStats();
 }
 
 Actor::Actor(int _x, int _y){
@@ -35,6 +40,10 @@ Actor::Actor(int _x, int _y){
 	setSymbol('%');
 	setType("Actor");
 	setColor();
+
+	base_stats = 28;
+
+	initializeStats();
 }
 
 
@@ -49,6 +58,12 @@ Actor::Actor(int _x, int _y, string name, string description, string type, char 
 	setType(type);
 	setSymbol(symbol);
 	setColor();
+
+	base_stats = 28;
+
+	initializeStats();
+
+	randomizeStats(base_stats);
 }
 
 void Actor::setColor(){
@@ -62,5 +77,55 @@ void Actor::setColor(){
 		this->color[1] = 0;
 		this->color[2] = 0;
 		this->color[3] = 0;
+	}
+}
+
+/*
+	Initialize stats to 1, the minimum stat value possible
+*/
+void Actor::initializeStats(){
+	STR = 1;
+	CON = 1;
+	INT = 1;
+	AGI = 1;
+	DEX = 1;
+	CHR = 1;
+	PER = 1;
+}
+
+void Actor::randomizeStats(int max_points){
+	srand(time(NULL));
+
+	int number_of_stats = 7;
+	int spent_points = 0;
+
+	vector<int*>stats;
+	stats.push_back(&STR);
+	stats.push_back(&CON);
+	stats.push_back(&INT);
+	stats.push_back(&AGI);
+	stats.push_back(&DEX);
+	stats.push_back(&CHR);
+	stats.push_back(&PER);
+
+	while (spent_points != max_points){
+		int rand_stat = rand() % stats.size();
+		int rand_points_given = rand() % 2 + 1;
+		printf("Stat: %d, Points to be given: %d\n", rand_stat, rand_points_given);
+		if ((*stats[rand_stat] + rand_points_given) <= 10){
+			*stats[rand_stat] = *stats[rand_stat] + rand_points_given;
+			spent_points = spent_points + rand_points_given;
+		}
+		else{
+			//greater than 10, so add points up to 10, add amount of used points to spent_points, and remove stat from vector
+			*stats[rand_stat] = *stats[rand_stat] + rand_points_given;
+			int remainder = *stats[rand_stat] - 10;
+			*stats[rand_stat] = *stats[rand_stat] - remainder;
+			spent_points = spent_points + rand_points_given - remainder;
+			stats.erase(stats.begin()+rand_stat);
+		}
+		if (stats.size() <= 0){
+			return;
+		}
 	}
 }
