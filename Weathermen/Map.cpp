@@ -46,6 +46,14 @@ void Map::newMove(int orig_x, int orig_y, int dest_x, int dest_y){
 	}
 }
 
+void Map::newPickUp(int orig_x, int orig_y){
+	Tile *pos = getTileAtPos(orig_x, orig_y);
+
+	if (pos != nullptr){
+		q.push(new Pickup(pos));
+	}
+}
+
 void Map::executeQueue(){
 	//gruesome
 	bool result = false;

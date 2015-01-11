@@ -1,7 +1,7 @@
-﻿Build started 1/11/2015 1:36:44 AM.
+﻿Build started 1/11/2015 3:00:45 AM.
      1>Project "C:\Users\Danny\Documents\Weatherman\Weathermen\Weathermen.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Action.cpp Actor.cpp AI.cpp CsvReader.cpp GlutClass.cpp Item.cpp ItemContainer.cpp main.cpp Map.cpp Material.cpp Move.cpp Tile.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Action.cpp Actor.cpp AI.cpp CsvReader.cpp GlutClass.cpp Item.cpp ItemContainer.cpp main.cpp Map.cpp Material.cpp Move.cpp Pickup.cpp Tile.cpp
          Tile.cpp
      1>c:\users\danny\documents\weatherman\weathermen\tile.cpp(66): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
      1>c:\users\danny\documents\weatherman\weathermen\tile.cpp(67): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
@@ -10,7 +10,8 @@
      1>c:\users\danny\documents\weatherman\weathermen\tile.cpp(74): warning C4018: '<' : signed/unsigned mismatch
      1>c:\users\danny\documents\weatherman\weathermen\tile.cpp(87): warning C4018: '<' : signed/unsigned mismatch
      1>c:\users\danny\documents\weatherman\weathermen\tile.cpp(109): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\danny\documents\weatherman\weathermen\tile.cpp(118): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\danny\documents\weatherman\weathermen\tile.cpp(122): warning C4018: '<' : signed/unsigned mismatch
+         Pickup.cpp
          Move.cpp
          Material.cpp
      1>c:\users\danny\documents\weatherman\weathermen\material.cpp(35): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
@@ -30,7 +31,7 @@
          AI.cpp
      1>c:\users\danny\documents\weatherman\weathermen\ai.cpp(37): warning C4018: '<' : signed/unsigned mismatch
          Actor.cpp
-     1>c:\users\danny\documents\weatherman\weathermen\actor.cpp(101): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\danny\documents\weatherman\weathermen\actor.cpp(108): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
          Action.cpp
          Generating Code...
        Link:
@@ -45,10 +46,11 @@
          Debug\Map.obj
          Debug\Material.obj
          Debug\Move.obj
+         Debug\Pickup.obj
          Debug\Tile.obj
          Weathermen.vcxproj -> C:\Users\Danny\Documents\Weatherman\Debug\Weathermen.exe
      1>Done Building Project "C:\Users\Danny\Documents\Weatherman\Weathermen\Weathermen.vcxproj" (Rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:09.52
+Time Elapsed 00:00:07.64

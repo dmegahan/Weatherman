@@ -113,6 +113,10 @@ void Tile::removeItem(Item *item){
 	}
 }
 
+void Tile::removeAllItems(){
+	contains_items.clear();
+}
+
 bool Tile::hasItem(Item *item){
 	bool has_items = false;
 	for(int i = 0; i < this->contains_items.size(); i++){

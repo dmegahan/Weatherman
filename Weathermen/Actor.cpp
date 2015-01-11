@@ -27,6 +27,8 @@ Actor::Actor(){
 	view_radius = 5;
 
 	initializeStats();
+
+	inventory = new ItemContainer();
 }
 
 Actor::Actor(int _x, int _y){
@@ -45,6 +47,8 @@ Actor::Actor(int _x, int _y){
 	base_stats = 28;
 
 	initializeStats();
+
+	inventory = new ItemContainer();
 }
 
 
@@ -65,7 +69,10 @@ Actor::Actor(int _x, int _y, string name, string description, string type, char 
 	initializeStats();
 
 	randomizeStats(base_stats);
+
+	inventory = new ItemContainer();
 }
+
 
 void Actor::setColor(){
 	if (this->getType().compare("PLAYER") == 0){
@@ -144,4 +151,8 @@ void Actor::randomizeStats(int max_points){
 void Actor::actionEffects(int energy_expended){
 	hunger = hunger - 1;
 	thirst = thirst - 1;
+}
+
+ItemContainer* Actor::getInventory(){
+	return inventory;
 }

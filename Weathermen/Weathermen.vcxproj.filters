@@ -72,6 +72,9 @@
     <ClInclude Include="ItemContainer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Pickup.h">
+      <Filter>Header Files\Action Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Tile.cpp">
@@ -109,6 +112,9 @@
     </ClCompile>
     <ClCompile Include="ItemContainer.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pickup.cpp">
+      <Filter>Source Files\Actions</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

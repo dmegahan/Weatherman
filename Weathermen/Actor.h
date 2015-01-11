@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <iostream>
 #include "Action.h"
+#include "ItemContainer.h"
 
 using namespace std;
 
@@ -16,7 +17,7 @@ class Actor{
 		float color [4];
 
 		int base_stats;
-
+		ItemContainer *inventory;
 	public:
 		int x;
 		int y;
@@ -55,6 +56,8 @@ class Actor{
 		string getDescription(){ return actor_description; }
 		string getType(){ return actor_type; }
 		char getSymbol(){ return actor_symbol; }
+
+		ItemContainer* getInventory();
 };
 
 #endif

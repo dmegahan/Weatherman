@@ -136,6 +136,10 @@ void keyOperations(void) {
 		player->actionEffects();
 		cout << "d pressed!";
 	}
+	else if (keyStates['e']){
+		map.newPickUp(player->x, player->y);
+		player->actionEffects();
+	}
 	else if (keyStates['z']){
 		cout << "z pressed!";
 	}
@@ -182,6 +186,7 @@ int main(int argc, char **argv){
 	all_AI.push_back(test_AI);
 
 	FOV();
+	/*
 	Item* item1 = new Item("test1", "test1", "iron", 'U');
 	Item* item2 = new Item();
 	//Item* item3 = new Item(*item1);
@@ -192,6 +197,13 @@ int main(int argc, char **argv){
 	cont->addItems({ item4 });
 	cont->removeItems({ item4, item1 });
 	vector<Item*> removed_items = cont->removeAllItems();
+	*/
+
+	Item* item1 = new Item("test1", "test1", "test1", 'U');
+	Item* item2 = new Item("test2", "test2", "test2", 'X');
+
+	map.getTileAtPos(1, 4)->addItem(item1);
+	map.getTileAtPos(1, 4)->addItem(item2);
 
 	glutMainLoop();
 

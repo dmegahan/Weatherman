@@ -11,6 +11,7 @@
 
 #include "Action.h"
 #include "Move.h"
+#include "Pickup.h"
 #include "Tile.h"
 
 using namespace std;
@@ -41,6 +42,7 @@ public:
 	Tile* getTileAtPos(int posx, int posy);
 
 	void newMove(int orig_x, int orig_y, int dest_x, int dest_y);
+	void newPickUp(int orig_x, int orig_y);
 	void executeQueue();
 
 	void resetVisibility();

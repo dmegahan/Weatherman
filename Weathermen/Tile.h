@@ -34,6 +34,7 @@ class Tile
 		void removeActor(Actor *actor);
 		bool hasActor(Actor *actor);
 		void removeItem(Item *item);
+		void removeAllItems();
 		bool hasItem(Item *item);
 		void spawnActor();
 		void spawnItem();
