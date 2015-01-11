@@ -82,6 +82,7 @@
     <ClInclude Include="CsvReader.h" />
     <ClInclude Include="GlutClass.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="ItemContainer.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="Move.h" />
@@ -94,6 +95,7 @@
     <ClCompile Include="CsvReader.cpp" />
     <ClCompile Include="GlutClass.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="ItemContainer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Material.cpp" />

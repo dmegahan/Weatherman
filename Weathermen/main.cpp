@@ -12,6 +12,7 @@
 #include "Move.h"
 #include "GlutClass.h"
 #include "AI.h"
+#include "ItemContainer.h"
 
 #include <process.h>
 
@@ -181,6 +182,16 @@ int main(int argc, char **argv){
 	all_AI.push_back(test_AI);
 
 	FOV();
+	Item* item1 = new Item("test1", "test1", "iron", 'U');
+	Item* item2 = new Item();
+	//Item* item3 = new Item(*item1);
+	vector<Item*> items = { item1, item2};
+	ItemContainer *cont = new ItemContainer(items);
+
+	Item* item4 = new Item();
+	cont->addItems({ item4 });
+	cont->removeItems({ item4, item1 });
+	vector<Item*> removed_items = cont->removeAllItems();
 
 	glutMainLoop();
 

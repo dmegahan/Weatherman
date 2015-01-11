@@ -23,7 +23,7 @@ Item::Item(){
 Item::Item(string name, string description, string material, char symbol){
 	setName(name);
 	setDescription(description);
-	setMaterial(material);
+	//setMaterial(material);
 	setSymbol(symbol);
 	setColor();
 }
