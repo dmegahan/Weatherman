@@ -1,39 +1,9 @@
-﻿Build started 1/11/2015 3:00:45 AM.
-     1>Project "C:\Users\Danny\Documents\Weatherman\Weathermen\Weathermen.vcxproj" on node 2 (Rebuild target(s)).
+﻿Build started 1/11/2015 4:37:28 AM.
+     1>Project "C:\Users\Danny\Documents\Weatherman\Weathermen\Weathermen.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Action.cpp Actor.cpp AI.cpp CsvReader.cpp GlutClass.cpp Item.cpp ItemContainer.cpp main.cpp Map.cpp Material.cpp Move.cpp Pickup.cpp Tile.cpp
-         Tile.cpp
-     1>c:\users\danny\documents\weatherman\weathermen\tile.cpp(66): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\danny\documents\weatherman\weathermen\tile.cpp(67): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\danny\documents\weatherman\weathermen\tile.cpp(68): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\danny\documents\weatherman\weathermen\tile.cpp(69): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\danny\documents\weatherman\weathermen\tile.cpp(74): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\danny\documents\weatherman\weathermen\tile.cpp(87): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\danny\documents\weatherman\weathermen\tile.cpp(109): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\danny\documents\weatherman\weathermen\tile.cpp(122): warning C4018: '<' : signed/unsigned mismatch
-         Pickup.cpp
-         Move.cpp
-         Material.cpp
-     1>c:\users\danny\documents\weatherman\weathermen\material.cpp(35): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-         Map.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
          main.cpp
-     1>c:\users\danny\documents\weatherman\weathermen\main.cpp(106): warning C4018: '<' : signed/unsigned mismatch
-         ItemContainer.cpp
-     1>c:\users\danny\documents\weatherman\weathermen\itemcontainer.cpp(14): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\danny\documents\weatherman\weathermen\itemcontainer.cpp(20): warning C4018: '<' : signed/unsigned mismatch
-         Item.cpp
-     1>c:\users\danny\documents\weatherman\weathermen\item.cpp(32): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\danny\documents\weatherman\weathermen\item.cpp(33): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\danny\documents\weatherman\weathermen\item.cpp(34): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\danny\documents\weatherman\weathermen\item.cpp(35): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-         GlutClass.cpp
-         CsvReader.cpp
-         AI.cpp
-     1>c:\users\danny\documents\weatherman\weathermen\ai.cpp(37): warning C4018: '<' : signed/unsigned mismatch
-         Actor.cpp
-     1>c:\users\danny\documents\weatherman\weathermen\actor.cpp(108): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
-         Action.cpp
-         Generating Code...
+     1>c:\users\danny\documents\weatherman\weathermen\main.cpp(125): warning C4018: '<' : signed/unsigned mismatch
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Danny\Documents\Weatherman\Debug\Weathermen.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Danny\Documents\Weatherman\Debug\Weathermen.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Danny\Documents\Weatherman\Debug\Weathermen.lib" /MACHINE:X86 Debug\Action.obj
          Debug\Actor.obj
@@ -49,8 +19,8 @@
          Debug\Pickup.obj
          Debug\Tile.obj
          Weathermen.vcxproj -> C:\Users\Danny\Documents\Weatherman\Debug\Weathermen.exe
-     1>Done Building Project "C:\Users\Danny\Documents\Weatherman\Weathermen\Weathermen.vcxproj" (Rebuild target(s)).
+     1>Done Building Project "C:\Users\Danny\Documents\Weatherman\Weathermen\Weathermen.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:07.64
+Time Elapsed 00:00:01.26

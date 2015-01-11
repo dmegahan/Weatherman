@@ -34,8 +34,26 @@ void GlutClass::InitializeTiles(){
 
 void GlutClass::drawTiles(){
 	char text;
-	for (int y = 0; y < map->getSizeY(); y++){
-		for (int x = 0; x < map->getSizeX(); x++){
+	//calculate the min and max draw range and only show those tile within those bounds
+	int draw_range = 10;
+	int min_range_y = player_y - draw_range;
+	if (min_range_y < 0){
+		min_range_y = 0;
+	}
+	int max_range_y = player_y + draw_range;
+	if (max_range_y > map->getSizeY()-1){
+		max_range_y = map->getSizeY();
+	}
+	int min_range_x = player_x - draw_range;
+	if (min_range_x < 0){
+		min_range_x = 0;
+	}
+	int max_range_x = player_x + draw_range;
+	if (max_range_x > map->getSizeX() - 1){
+		max_range_x = map->getSizeX();
+	}
+	for (int y = min_range_y; y < max_range_y; y++){
+		for (int x = min_range_x; x < max_range_x; x++){
 			Tile *tile = map->getTileAtPos(x, y);
 			text = tile->current_character;
 			renderTile(*tile, text, x, y);

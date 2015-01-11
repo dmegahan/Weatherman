@@ -56,7 +56,7 @@ Actor::Actor(int _x, int _y, string name, string description, string type, char 
 	x = _x;
 	y = _y;
 
-	view_radius = 5;
+	view_radius = 10;
 
 	setName(name);
 	setDescription(description);

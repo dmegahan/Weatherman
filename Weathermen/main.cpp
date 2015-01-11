@@ -44,7 +44,26 @@ void display(){
 	glClear(GL_COLOR_BUFFER_BIT);
 	glLoadIdentity();
 	glEnable(GL_TEXTURE_2D);
-	glTranslatef(-5, 4, -10);
+	//glTranslatef(-5, 4, -10);
+	//x_offset and y_offset are used to keep the map centered in the middle of the screen
+	int x_offset = -player->x + 8; 
+	int y_offset = player->y - 6;
+
+	int view_range = 10;
+	//these if statements will be set to a default number if the edge of the map is seen, so no empty space is shown
+	if (player->x <= view_range){
+		x_offset = -5;
+	}
+	else if (player->x >= MAP_SIZEX - view_range){
+		x_offset = -32;
+	}
+	if (player->y <= view_range){
+		y_offset = 4;
+	}
+	else if (player->y >= MAP_SIZEY - view_range){
+		y_offset = 34;
+	}
+	glTranslatef(x_offset, y_offset, -10);
 	glutClass.drawTiles();
 	glutSwapBuffers();
 	glFlush();
@@ -164,7 +183,7 @@ int main(int argc, char **argv){
 
 	glutIgnoreKeyRepeat(1);
 
-	player = new Actor(1, 3, "PC", "Player Character", "PLAYER", '@');
+	player = new Actor(48, 49, "PC", "Player Character", "PLAYER", '@');
 
 	playerX = player->x;
 	playerY = player->y;
