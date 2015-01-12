@@ -24,8 +24,12 @@ string getMaterial();
 int getHeight();
 
 Tile::Tile(){
+	color.resize(4);
+	default_color.resize(4);
+
 	setType("ROCK");
 	setColor();
+	setDefaultColor();
 	default_character = '#';
 	current_character = default_character;
 
@@ -34,6 +38,9 @@ Tile::Tile(){
 }
 
 Tile::Tile(string type, string material, int height, string name, string description, bool passable){
+	color.resize(4);
+	default_color.resize(4);
+
 	setType(type);
 	setMaterial(Material(material));
 	setHeight(height);
@@ -41,6 +48,7 @@ Tile::Tile(string type, string material, int height, string name, string descrip
 	setDescription(description);
 	setPassable(passable);
 	setColor();
+	setDefaultColor();
 
 	if (this->getType().compare("GRASS") == 0){
 		default_character = ',';
@@ -62,11 +70,25 @@ void Tile::setColor(){
 	this->color[3] = getMaterial().getColor()[3];
 }
 
-void Tile::setColor(int r, int g, int b, int a){
+void Tile::setDefaultColor(){
+	this->default_color[0] = getMaterial().getColor()[0];
+	this->default_color[1] = getMaterial().getColor()[1];
+	this->default_color[2] = getMaterial().getColor()[2];
+	this->default_color[3] = getMaterial().getColor()[3];
+}
+
+void Tile::setColor(float r, float g, float b, float a){
 	this->color[0] = r;
 	this->color[1] = g;
 	this->color[2] = b;
 	this->color[3] = a;
+}
+
+void Tile::setDefaultColor(float r, float g, float b, float a){
+	this->default_color[0] = r;
+	this->default_color[1] = g;
+	this->default_color[2] = b;
+	this->default_color[3] = a;
 }
 
 void Tile::removeActor(Actor *actor){

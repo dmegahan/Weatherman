@@ -62,7 +62,7 @@ void GlutClass::drawTiles(){
 }
 
 void GlutClass::renderTile(Tile tile, char c, int posX, int posY){
-	float *color;
+	vector<float> color;
 	if (!tile.isEmpty() && tile.VISIBLE){
 		Actor *actor = tile.getActors()[0];
 		color = actor->getColor();

@@ -16,6 +16,8 @@ string getDescription();
 char getSymbol();
 
 Actor::Actor(){
+	color.resize(4);
+
 	setName("");
 	setDescription("");
 	setSymbol('%');
@@ -29,9 +31,12 @@ Actor::Actor(){
 	initializeStats();
 
 	inventory = new ItemContainer();
+	state = "default";
 }
 
 Actor::Actor(int _x, int _y){
+	color.resize(4);
+
 	x = _x;
 	y = _y;
 
@@ -49,10 +54,14 @@ Actor::Actor(int _x, int _y){
 	initializeStats();
 
 	inventory = new ItemContainer();
+	state = "default";
+
 }
 
 
 Actor::Actor(int _x, int _y, string name, string description, string type, char symbol){
+	color.resize(4);
+
 	x = _x;
 	y = _y;
 
@@ -71,6 +80,7 @@ Actor::Actor(int _x, int _y, string name, string description, string type, char 
 	randomizeStats(base_stats);
 
 	inventory = new ItemContainer();
+	state = "default";
 }
 
 

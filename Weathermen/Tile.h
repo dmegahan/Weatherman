@@ -22,7 +22,8 @@ class Tile
 
 		vector<Actor*> contains_actors;
 		vector<Item*> contains_items;
-		float color [4];
+		vector<float> color;
+		vector<float> default_color;
 	public:
 		bool VISIBLE;
 		bool discovered;
@@ -43,8 +44,11 @@ class Tile
 		void addItem(Item *item);
 
 		void setColor();
-		void setColor(int r, int g, int b, int a);
-		float * getColor(){ return color; }
+		void setColor(float r, float g, float b, float a);
+		void setDefaultColor();
+		void setDefaultColor(float r, float g, float b, float a);
+		vector<float>  getColor(){ return color; }
+		vector<float>  getDefaultColor(){ return default_color; }
 
 		void setType(string type){ terrain_type = type; }
 		void setPassable(bool passable){ is_passable = passable; }

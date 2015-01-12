@@ -46,21 +46,21 @@ void display(){
 	glEnable(GL_TEXTURE_2D);
 	//glTranslatef(-5, 4, -10);
 	//x_offset and y_offset are used to keep the map centered in the middle of the screen
-	int x_offset = -player->x + 8; 
-	int y_offset = player->y - 6;
+	int x_offset = -playerX + 8; 
+	int y_offset = playerY - 6;
 
 	int view_range = 10;
 	//these if statements will be set to a default number if the edge of the map is seen, so no empty space is shown
-	if (player->x <= view_range){
+	if (playerX <= view_range){
 		x_offset = -5;
 	}
-	else if (player->x >= MAP_SIZEX - view_range){
+	else if (playerX >= MAP_SIZEX - view_range){
 		x_offset = -32;
 	}
-	if (player->y <= view_range){
+	if (playerY <= view_range){
 		y_offset = 4;
 	}
-	else if (player->y >= MAP_SIZEY - view_range){
+	else if (playerY >= MAP_SIZEY - view_range){
 		y_offset = 34;
 	}
 	glTranslatef(x_offset, y_offset, -10);
@@ -135,37 +135,87 @@ void keyOperations(void) {
 
 	//When a key is pressed, add a action to the queue
 	//then execute that queue (AI will add moves to it as well) and update map and call display
-	if (keyStates['w']) {
-		map.newMove(player->x, player->y, player->x, player->y - 1);
-		player->actionEffects();
-		cout << "w pressed!";
-	}
-	else if (keyStates['a']){
-		map.newMove(player->x, player->y, player->x - 1, player->y);
-		player->actionEffects();
-		cout << "a pressed!";
-	}
-	else if (keyStates['s']){
-		map.newMove(player->x, player->y, player->x, player->y + 1);
-		player->actionEffects();
-		cout << "s pressed!";
-	}
-	else if (keyStates['d']){
-		map.newMove(player->x, player->y, player->x + 1, player->y);
-		player->actionEffects();
-		cout << "d pressed!";
-	}
-	else if (keyStates['e']){
-		map.newPickUp(player->x, player->y);
-		player->actionEffects();
-	}
-	else if (keyStates['z']){
-		cout << "z pressed!";
-	}
+	if (!player->state.compare("view") == 0){
+		if (keyStates['w']) {
+			map.newMove(player->x, player->y, player->x, player->y - 1);
+			player->actionEffects();
+			cout << "w pressed!";
+		}
+		else if (keyStates['a']){
+			map.newMove(player->x, player->y, player->x - 1, player->y);
+			player->actionEffects();
+			cout << "a pressed!";
+		}
+		else if (keyStates['s']){
+			map.newMove(player->x, player->y, player->x, player->y + 1);
+			player->actionEffects();
+			cout << "s pressed!";
+		}
+		else if (keyStates['d']){
+			map.newMove(player->x, player->y, player->x + 1, player->y);
+			player->actionEffects();
+			cout << "d pressed!";
+		}
+		else if (keyStates['e']){
+			map.newPickUp(player->x, player->y);
+			player->actionEffects();
+		}
+		else if (keyStates['v']){
+			//change state to view state
+			player->state = "view";
+		}
+		else if (keyStates['z']){
+			cout << "z pressed!";
+		}
 
-	map.executeQueue();
-	HANDLE hThread = (HANDLE)_beginthread(AIActions, 0, 0);
-	FOV();
+		map.executeQueue();
+		playerX = player->x;
+		playerY = player->y;
+		HANDLE hThread = (HANDLE)_beginthread(AIActions, 0, 0);
+		FOV();
+	}
+	else{
+		Tile *last_tile = map.getTileAtPos(playerX, playerY);
+		vector<float> color = last_tile->getDefaultColor();
+		last_tile->setColor(color[0], color[1], color[2], color[3]);
+		if (keyStates['w']) {
+			playerX = playerX;
+			playerY = playerY - 1;
+
+			//tile will be selected, recolor it until another tile is selected
+			Tile *selected = map.getTileAtPos(playerX, playerY);
+			selected->setColor(255, 255, 0, 0);
+		}
+		else if (keyStates['a']){
+			playerX = playerX - 1;
+			playerY = playerY;
+
+			//tile will be selected, recolor it until another tile is selected
+			Tile *selected = map.getTileAtPos(playerX, playerY);
+			selected->setColor(255, 255, 0, 0);
+		}
+		else if (keyStates['s']){
+			playerX = playerX;
+			playerY = playerY + 1;
+
+			//tile will be selected, recolor it until another tile is selected
+			Tile *selected = map.getTileAtPos(playerX, playerY);
+			selected->setColor(255, 255, 0, 0);
+		}
+		else if (keyStates['d']){
+			playerX = playerX + 1;
+			playerY = playerY;
+
+			//tile will be selected, recolor it until another tile is selected
+			Tile *selected = map.getTileAtPos(playerX, playerY);
+			selected->setColor(255, 255, 0, 0);
+		}
+		else if (keyStates['v']){
+			playerX = player->x;
+			playerY = player->y;
+			player->state = "default";
+		}
+	}
 }	
 
 int main(int argc, char **argv){

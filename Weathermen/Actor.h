@@ -14,7 +14,7 @@ class Actor{
 		string actor_description;
 		string actor_type;
 		char actor_symbol;
-		float color [4];
+		vector<float> color;
 
 		int base_stats;
 		ItemContainer *inventory;
@@ -34,6 +34,7 @@ class Actor{
 		int thirst;
 
 		int view_radius;
+		string state;
 
 		Actor();
 		Actor(int _x, int _y);
@@ -50,7 +51,7 @@ class Actor{
 		void actionEffects(int energy_expended = 0);
 		
 		void setColor();
-		float * getColor(){ return color; }
+		vector<float> getColor(){ return color; }
 
 		string getName(){ return actor_name; }
 		string getDescription(){ return actor_description; }
