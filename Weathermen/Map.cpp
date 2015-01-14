@@ -20,7 +20,7 @@ Map::Map(int x, int y){
 void Map::createMap(){
 	for (int i = 0; i < size_x; i++){
 		for (int j = 0; j < size_y; j++){
-			if (i % 2 == 0 && j % 2 == 0){
+			if (i == 2 && j == 2){
 				map[i][j] = Tile("WALL", "Iron", 2, "ROCK WALL", "ROCK WALL", false);
 			}
 			else{

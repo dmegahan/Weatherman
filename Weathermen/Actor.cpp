@@ -178,6 +178,8 @@ void Actor::applyStats(){
 void Actor::actionEffects(int energy_expended){
 	current_hunger = current_hunger - 1;
 	current_hunger = current_thirst - 1;
+
+
 }
 
 ItemContainer* Actor::getInventory(){
@@ -187,7 +189,7 @@ ItemContainer* Actor::getInventory(){
 void Actor::applyDamage(int damage){
 	//use CON to determine damage actually taken
 	//this stat will reduce the damage by whatever % (currently 10 CON = 50% reduction)
-	int damage_reduction_multiplier = (this->CON) * 5;
+	float damage_reduction_multiplier = (this->CON) * 5;
 	int true_damage = damage * (damage_reduction_multiplier / 100);
 
 	this->current_health = this->current_health - true_damage;
