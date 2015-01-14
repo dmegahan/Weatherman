@@ -41,7 +41,7 @@ bool Map::newMove(int orig_x, int orig_y, int dest_x, int dest_y){
 	Tile *orig = getTileAtPos(orig_x, orig_y);
 	Tile *dest = getTileAtPos(dest_x, dest_y);
 
-	if (orig != nullptr && dest != nullptr && dest->isEmpty()){
+	if (orig != nullptr && dest != nullptr){
 		q.push(new Move(orig, dest, dest_x, dest_y));
 		return true;
 	}
