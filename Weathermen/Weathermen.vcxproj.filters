@@ -19,9 +19,6 @@
     <Filter Include="Source Files\Actions">
       <UniqueIdentifier>{94aec025-427c-4af6-8673-53fc88c24416}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Items">
-      <UniqueIdentifier>{7a253999-4b07-4742-8f42-077853b205d7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Items">
       <UniqueIdentifier>{cb7fac45-674d-4179-a0f9-81ce98d8eb90}</UniqueIdentifier>
     </Filter>
@@ -36,6 +33,12 @@
     </Filter>
     <Filter Include="Source Files\AI">
       <UniqueIdentifier>{43bf5831-cd33-4276-9776-d16aaaa0665e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entities">
+      <UniqueIdentifier>{7a253999-4b07-4742-8f42-077853b205d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entities\Items">
+      <UniqueIdentifier>{f9f8d3e8-f0dc-4f1e-8d61-866bc3b2748e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -60,9 +63,6 @@
     <ClInclude Include="GlutClass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Item.h">
-      <Filter>Header Files\Items</Filter>
-    </ClInclude>
     <ClInclude Include="Actor.h">
       <Filter>Header Files\Actors</Filter>
     </ClInclude>
@@ -80,6 +80,24 @@
     </ClInclude>
     <ClInclude Include="MeleeAttack.h">
       <Filter>Header Files\Action Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Header Files\Entities\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Header Files\Entities\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Equiptable.h">
+      <Filter>Header Files\Entities\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Armor.h">
+      <Filter>Header Files\Entities\Items</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +145,9 @@
     </ClCompile>
     <ClCompile Include="MeleeAttack.cpp">
       <Filter>Source Files\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Source Files\Items</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

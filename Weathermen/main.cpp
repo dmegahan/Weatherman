@@ -169,7 +169,7 @@ Tile* viewTiles(char exit_key){
 	else if (keyStates[exit_key]){
 		playerX = player->x;
 		playerY = player->y;
-		player->state = "default";
+		player->state = "normal";
 		cout << "%c pressed!", exit_key;
 	}
 	else if (keyStates[13]){
@@ -179,7 +179,7 @@ Tile* viewTiles(char exit_key){
 		selected->setColor(color[0], color[1], color[2], color[3]);
 		playerX = player->x;
 		playerY = player->y;
-		player->state = "default";
+		player->state = "normal";
 		cout << "Enter pressed!";
 		return selected;
 	}

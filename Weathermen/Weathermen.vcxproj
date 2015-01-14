@@ -79,8 +79,11 @@
     <ClInclude Include="Action.h" />
     <ClInclude Include="Actor.h" />
     <ClInclude Include="AI.h" />
+    <ClInclude Include="Armor.h" />
     <ClInclude Include="Attack.h" />
     <ClInclude Include="CsvReader.h" />
+    <ClInclude Include="Entity.h" />
+    <ClInclude Include="Equiptable.h" />
     <ClInclude Include="GlutClass.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemContainer.h" />
@@ -88,8 +91,10 @@
     <ClInclude Include="Material.h" />
     <ClInclude Include="MeleeAttack.h" />
     <ClInclude Include="Move.h" />
+    <ClInclude Include="Object.h" />
     <ClInclude Include="Pickup.h" />
     <ClInclude Include="Tile.h" />
+    <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Action.cpp" />
@@ -97,6 +102,7 @@
     <ClCompile Include="AI.cpp" />
     <ClCompile Include="Attack.cpp" />
     <ClCompile Include="CsvReader.cpp" />
+    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="GlutClass.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemContainer.cpp" />

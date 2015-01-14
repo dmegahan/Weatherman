@@ -31,7 +31,7 @@ Actor::Actor(){
 	initializeStats();
 
 	inventory = new ItemContainer();
-	state = "default";
+	state = "normal";
 }
 
 Actor::Actor(int _x, int _y){
@@ -54,7 +54,7 @@ Actor::Actor(int _x, int _y){
 	initializeStats();
 
 	inventory = new ItemContainer();
-	state = "default";
+	state = "normal";
 
 }
 
@@ -80,7 +80,7 @@ Actor::Actor(int _x, int _y, string name, string description, string type, char 
 	randomizeStats(base_stats);
 
 	inventory = new ItemContainer();
-	state = "default";
+	state = "normal";
 }
 
 
