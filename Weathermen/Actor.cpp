@@ -110,8 +110,13 @@ void Actor::initializeStats(){
 	CHR = 1;
 	PER = 1;
 
-	hunger = 50;
-	thirst = 50;
+	current_hunger = 75;
+	current_thirst = 75;
+	current_health = 100;
+
+	max_hunger = 100;
+	max_thirst = 100;
+	max_health = 100;
 }
 
 void Actor::randomizeStats(int max_points){
@@ -151,6 +156,18 @@ void Actor::randomizeStats(int max_points){
 	}
 }
 
+void Actor::applyStats(){
+	//apply effects of stats 
+	//CON affects hunger, thirst, and health starting values;
+	current_health = (CON * 10) + current_health;
+	current_hunger = (CON * 2) + current_hunger;
+	current_thirst = (CON * 2) + current_thirst;
+
+	max_health = (CON * 10) + max_health;
+	max_hunger = (CON * 5) + max_hunger;
+	max_thirst = (CON * 5) + max_thirst;
+}
+
 /*
 	Not the best name, but actionEffects will degrade stats like hunger and thirst ever time its called, as well as
 	check the status of the character, including health, sickness, stamina 
@@ -159,10 +176,25 @@ void Actor::randomizeStats(int max_points){
 	other status effectsThis 
 */
 void Actor::actionEffects(int energy_expended){
-	hunger = hunger - 1;
-	thirst = thirst - 1;
+	current_hunger = current_hunger - 1;
+	current_hunger = current_thirst - 1;
 }
 
 ItemContainer* Actor::getInventory(){
 	return inventory;
+}
+
+void Actor::applyDamage(int damage){
+	//use CON to determine damage actually taken
+	//this stat will reduce the damage by whatever % (currently 10 CON = 50% reduction)
+	int damage_reduction_multiplier = (this->CON) * 5;
+	int true_damage = damage * (damage_reduction_multiplier / 100);
+
+	this->current_health = this->current_health - true_damage;
+	printf("Damage done: %d\n", true_damage);
+	printf("Health after attack: %d\n", this->current_health);
+
+	if (current_health <= 0){
+		//die
+	}
 }

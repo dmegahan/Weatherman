@@ -38,6 +38,7 @@ Actor *player;
 
 int factor = 100;
 double dx;
+char exit_key = '~';
 
 void display(){
 	glClearColor(0.0, 0.0, 0.0, 1.0);
@@ -128,6 +129,63 @@ void AIActions(void *arg){
 	}
 }
 
+Tile* viewTiles(char exit_key){
+	Tile *last_tile = map.getTileAtPos(playerX, playerY);
+	vector<float> color = last_tile->getDefaultColor();
+	last_tile->setColor(color[0], color[1], color[2], color[3]);
+	Tile *selected = nullptr;
+	if (keyStates['w']) {
+		playerX = playerX;
+		playerY = playerY - 1;
+		cout << "w pressed!";
+		//tile will be selected, recolor it until another tile is selected
+		selected = map.getTileAtPos(playerX, playerY);
+		selected->setColor(255, 255, 0, 0);
+	}
+	else if (keyStates['a']){
+		playerX = playerX - 1;
+		playerY = playerY;
+		cout << "a pressed!";
+		//tile will be selected, recolor it until another tile is selected
+		selected = map.getTileAtPos(playerX, playerY);
+		selected->setColor(255, 255, 0, 0);
+	}
+	else if (keyStates['s']){
+		playerX = playerX;
+		playerY = playerY + 1;
+		cout << "s pressed!";
+		//tile will be selected, recolor it until another tile is selected
+		selected = map.getTileAtPos(playerX, playerY);
+		selected->setColor(255, 255, 0, 0);
+	}
+	else if (keyStates['d']){
+		playerX = playerX + 1;
+		playerY = playerY;
+		cout << "d pressed!";
+		//tile will be selected, recolor it until another tile is selected
+		selected = map.getTileAtPos(playerX, playerY);
+		selected->setColor(255, 255, 0, 0);
+	}
+	else if (keyStates[exit_key]){
+		playerX = player->x;
+		playerY = player->y;
+		player->state = "default";
+		cout << "%c pressed!", exit_key;
+	}
+	else if (keyStates[13]){
+		//enter key pressed, select the tile, exit the state, and evaluate the selected tile
+		selected = map.getTileAtPos(playerX, playerY);
+		vector<float> color = selected->getDefaultColor();
+		selected->setColor(color[0], color[1], color[2], color[3]);
+		playerX = player->x;
+		playerY = player->y;
+		player->state = "default";
+		cout << "Enter pressed!";
+		return selected;
+	}
+	//unless a confirmation keystroke is pressed, dont return anything
+	return nullptr;
+}
 
 
 void keyOperations(void) {
@@ -135,85 +193,85 @@ void keyOperations(void) {
 
 	//When a key is pressed, add a action to the queue
 	//then execute that queue (AI will add moves to it as well) and update map and call display
-	if (!player->state.compare("view") == 0){
+
+	//valid_key_pressed sets to true if a key that causes an actual action is pressed 
+	//(AKA no menu keys, no tile view keys, etc) cause an action to be used/cause the AI to move/do stuff
+	bool valid_action = false;
+	if (player->state.compare("default") == 0){
 		if (keyStates['w']) {
-			map.newMove(player->x, player->y, player->x, player->y - 1);
+			valid_action = map.newMove(player->x, player->y, player->x, player->y - 1);
 			player->actionEffects();
 			cout << "w pressed!";
 		}
 		else if (keyStates['a']){
-			map.newMove(player->x, player->y, player->x - 1, player->y);
+			valid_action = map.newMove(player->x, player->y, player->x - 1, player->y);
 			player->actionEffects();
 			cout << "a pressed!";
 		}
 		else if (keyStates['s']){
-			map.newMove(player->x, player->y, player->x, player->y + 1);
+			valid_action = map.newMove(player->x, player->y, player->x, player->y + 1);
 			player->actionEffects();
 			cout << "s pressed!";
 		}
 		else if (keyStates['d']){
-			map.newMove(player->x, player->y, player->x + 1, player->y);
+			valid_action = map.newMove(player->x, player->y, player->x + 1, player->y);
 			player->actionEffects();
 			cout << "d pressed!";
 		}
 		else if (keyStates['e']){
-			map.newPickUp(player->x, player->y);
+			valid_action = map.newPickUp(player->x, player->y);
 			player->actionEffects();
 		}
 		else if (keyStates['v']){
+			//initialize to player pos before calling view
+			playerX = player->x;
+			playerY = player->y;
 			//change state to view state
 			player->state = "view";
+			exit_key = 'v';
+
+		}
+		else if (keyStates['k']){
+			//initialize to player pos before calling view
+			playerX = player->x;
+			playerY = player->y;
+			player->state = "cview";
+			exit_key = 'k';
 		}
 		else if (keyStates['z']){
 			cout << "z pressed!";
 		}
 
-		map.executeQueue();
-		playerX = player->x;
-		playerY = player->y;
-		HANDLE hThread = (HANDLE)_beginthread(AIActions, 0, 0);
-		FOV();
-	}
-	else{
-		Tile *last_tile = map.getTileAtPos(playerX, playerY);
-		vector<float> color = last_tile->getDefaultColor();
-		last_tile->setColor(color[0], color[1], color[2], color[3]);
-		if (keyStates['w']) {
-			playerX = playerX;
-			playerY = playerY - 1;
-
-			//tile will be selected, recolor it until another tile is selected
-			Tile *selected = map.getTileAtPos(playerX, playerY);
-			selected->setColor(255, 255, 0, 0);
-		}
-		else if (keyStates['a']){
-			playerX = playerX - 1;
-			playerY = playerY;
-
-			//tile will be selected, recolor it until another tile is selected
-			Tile *selected = map.getTileAtPos(playerX, playerY);
-			selected->setColor(255, 255, 0, 0);
-		}
-		else if (keyStates['s']){
-			playerX = playerX;
-			playerY = playerY + 1;
-
-			//tile will be selected, recolor it until another tile is selected
-			Tile *selected = map.getTileAtPos(playerX, playerY);
-			selected->setColor(255, 255, 0, 0);
-		}
-		else if (keyStates['d']){
-			playerX = playerX + 1;
-			playerY = playerY;
-
-			//tile will be selected, recolor it until another tile is selected
-			Tile *selected = map.getTileAtPos(playerX, playerY);
-			selected->setColor(255, 255, 0, 0);
-		}
-		else if (keyStates['v']){
+		if (valid_action == true){
+			map.executeQueue();
 			playerX = player->x;
 			playerY = player->y;
-			player->state = "default";
+			HANDLE hThread = (HANDLE)_beginthread(AIActions, 0, 0);
+			FOV();
+		}
+	}
+	else{
+		Tile *returned = viewTiles(exit_key);
+		//apply the effect to a selected tile
+		if (returned != nullptr){
+			//check if selected was nullptr, if not, check the last state by looking at the exit key
+			if (exit_key == 'k'){
+				//combat exit_key
+				//get the target from selected tile
+				vector<Actor*> actors = returned->getActors();
+				if (actors.size() > 0){
+					Actor *target = actors[0];
+					bool valid_action = map.newMeleeAttack(player, target);
+
+					if (valid_action){
+						map.executeQueue();
+						playerX = player->x;
+						playerY = player->y;
+						HANDLE hThread = (HANDLE)_beginthread(AIActions, 0, 0);
+						FOV();
+					}
+				}
+			}
 		}
 	}
 }	
@@ -233,7 +291,7 @@ int main(int argc, char **argv){
 
 	glutIgnoreKeyRepeat(1);
 
-	player = new Actor(48, 49, "PC", "Player Character", "PLAYER", '@');
+	player = new Actor(1, 2, "PC", "Player Character", "PLAYER", '@');
 
 	playerX = player->x;
 	playerY = player->y;

@@ -20,7 +20,6 @@ protected:
 	
 public:
 	AI(Actor *actor, Map *map);
-	bool isAdjacent(int orig_x, int orig_y, int dest_x, int dest_y);
 
 	void nextAction();
 	void behavior();

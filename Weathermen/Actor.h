@@ -30,8 +30,13 @@ class Actor{
 		int CHR; 
 		int PER;
 
-		int hunger;
-		int thirst;
+		int current_hunger;
+		int current_thirst;
+		int current_health;
+
+		int max_hunger;
+		int max_thirst;
+		int max_health;
 
 		int view_radius;
 		string state;
@@ -47,8 +52,10 @@ class Actor{
 		
 		void initializeStats();
 		void randomizeStats(int max_points);
+		void applyStats();
 
 		void actionEffects(int energy_expended = 0);
+		void applyDamage(int damage);
 		
 		void setColor();
 		vector<float> getColor(){ return color; }

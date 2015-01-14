@@ -10,20 +10,6 @@ AI::AI(Actor *actor, Map *map){
 	this->map = map;
 }
 
-bool AI::isAdjacent(int orig_x, int orig_y, int dest_x, int dest_y){
-	if (abs(orig_x - dest_x) == 1){
-		if (abs(orig_y - dest_y) == 0){
-			return true;
-		}
-	}
-	else if (abs(orig_x - dest_x) == 0){
-		if (abs(orig_y - dest_y) == 1){
-			return true;
-		}
-	}
-	return false;
-}
-
 void AI::nextAction(){
 	//viewed_tiles.clear();
 	FOV();
@@ -32,10 +18,11 @@ void AI::nextAction(){
 	vector < std::array<int, 2>>::iterator beg = viewed_tiles.begin();
 	vector < std::array<int, 2>>::iterator end = viewed_tiles.end();
 	sort(beg, end);
+		
 	viewed_tiles.erase(unique(beg, end), end);
 
 	for (int i = 0; i < viewed_tiles.size(); i++){
-		if (isAdjacent(actor->x, actor->y, viewed_tiles[i][0], viewed_tiles[i][1])){
+		if (map->isAdjacent(actor->x, actor->y, viewed_tiles[i][0], viewed_tiles[i][1])){
 			Tile* tile = map->getTileAtPos(viewed_tiles[i][0], viewed_tiles[i][1]);
 			if (tile->isPassable() && tile->isEmpty()){
 				moveable_tiles.push_back(viewed_tiles[i]);

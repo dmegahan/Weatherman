@@ -75,6 +75,12 @@
     <ClInclude Include="Pickup.h">
       <Filter>Header Files\Action Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Attack.h">
+      <Filter>Header Files\Action Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MeleeAttack.h">
+      <Filter>Header Files\Action Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Tile.cpp">
@@ -114,6 +120,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Pickup.cpp">
+      <Filter>Source Files\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Attack.cpp">
+      <Filter>Source Files\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="MeleeAttack.cpp">
       <Filter>Source Files\Actions</Filter>
     </ClCompile>
   </ItemGroup>

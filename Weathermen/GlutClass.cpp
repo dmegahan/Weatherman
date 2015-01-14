@@ -20,12 +20,15 @@ void GlutClass::InitializeTiles(){
 	for (int y = 0; y < map->getSizeY(); y++){
 		for (int x = 0; x < map->getSizeX(); x++){
 			Tile *tile = map->getTileAtPos(x, y);
+			/*
 			if (tile->getType().compare("GRASS") == 0){
 				text = ',';
 			}
 			else if (tile->getType().compare("WALL") == 0){
 				text = '#';
 			}
+			*/
+			text = tile->current_character;
 			tile->VISIBLE = false;
 			renderTile(*tile, text, x, y);
 		}

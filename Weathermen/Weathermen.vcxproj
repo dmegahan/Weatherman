@@ -79,12 +79,14 @@
     <ClInclude Include="Action.h" />
     <ClInclude Include="Actor.h" />
     <ClInclude Include="AI.h" />
+    <ClInclude Include="Attack.h" />
     <ClInclude Include="CsvReader.h" />
     <ClInclude Include="GlutClass.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemContainer.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Material.h" />
+    <ClInclude Include="MeleeAttack.h" />
     <ClInclude Include="Move.h" />
     <ClInclude Include="Pickup.h" />
     <ClInclude Include="Tile.h" />
@@ -93,6 +95,7 @@
     <ClCompile Include="Action.cpp" />
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="AI.cpp" />
+    <ClCompile Include="Attack.cpp" />
     <ClCompile Include="CsvReader.cpp" />
     <ClCompile Include="GlutClass.cpp" />
     <ClCompile Include="Item.cpp" />
@@ -100,6 +103,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Material.cpp" />
+    <ClCompile Include="MeleeAttack.cpp" />
     <ClCompile Include="Move.cpp" />
     <ClCompile Include="Pickup.cpp" />
     <ClCompile Include="Tile.cpp" />
