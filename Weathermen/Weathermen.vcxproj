@@ -95,14 +95,17 @@
     <ClInclude Include="Pickup.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Weapon.h" />
+    <ClInclude Include="XMLReader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Action.cpp" />
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="AI.cpp" />
+    <ClCompile Include="Armor.cpp" />
     <ClCompile Include="Attack.cpp" />
     <ClCompile Include="CsvReader.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="Equiptable.cpp" />
     <ClCompile Include="GlutClass.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemContainer.cpp" />
@@ -112,7 +115,17 @@
     <ClCompile Include="MeleeAttack.cpp" />
     <ClCompile Include="Move.cpp" />
     <ClCompile Include="Pickup.cpp" />
+    <ClCompile Include="pugixml.cpp" />
     <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="Weapon.cpp" />
+    <ClCompile Include="XMLReader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Items.xml" />
+    <Xml Include="test.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MATERIALS.csv" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

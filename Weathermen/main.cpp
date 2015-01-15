@@ -13,6 +13,7 @@
 #include "GlutClass.h"
 #include "AI.h"
 #include "ItemContainer.h"
+#include "XMLReader.h"
 
 #include <process.h>
 
@@ -331,6 +332,9 @@ int main(int argc, char **argv){
 
 	map.getTileAtPos(1, 4)->addItem(item1);
 	map.getTileAtPos(1, 4)->addItem(item2);
+
+	XMLReader reader;
+	reader.readFile("Items.xml");
 
 	glutMainLoop();
 

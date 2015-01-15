@@ -1,0 +1,13 @@
+﻿<?xml version="1.0"?>
+<settings>
+    <deltaDistance> </deltaDistance>
+    <deltaConvergence>0.25 </deltaConvergence> 
+    <deltaMerging>1.0 </deltaMerging> 
+    <m> 2</m>
+    <multiplicativeFactor>0.7 </multiplicativeFactor> 
+    <rhoGood> 0.7 </rhoGood>
+    <rhoMin>0.3 </rhoMin>
+    <rhoSelect>0.6 </rhoSelect>
+    <stuckProbability>0.2 </stuckProbability> 
+    <zoneOfInfluenceMin>2.25 </zoneOfInfluenceMin>
+</settings>

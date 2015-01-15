@@ -19,9 +19,6 @@
     <Filter Include="Source Files\Actions">
       <UniqueIdentifier>{94aec025-427c-4af6-8673-53fc88c24416}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Items">
-      <UniqueIdentifier>{cb7fac45-674d-4179-a0f9-81ce98d8eb90}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Actors">
       <UniqueIdentifier>{135d2792-319c-4d45-93af-6b602814ca30}</UniqueIdentifier>
     </Filter>
@@ -39,6 +36,12 @@
     </Filter>
     <Filter Include="Header Files\Entities\Items">
       <UniqueIdentifier>{f9f8d3e8-f0dc-4f1e-8d61-866bc3b2748e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities">
+      <UniqueIdentifier>{cb7fac45-674d-4179-a0f9-81ce98d8eb90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities\Items">
+      <UniqueIdentifier>{2e7694f8-ebc8-458a-bae2-6be6a7c760e4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -99,6 +102,9 @@
     <ClInclude Include="Armor.h">
       <Filter>Header Files\Entities\Items</Filter>
     </ClInclude>
+    <ClInclude Include="XMLReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Tile.cpp">
@@ -125,9 +131,6 @@
     <ClCompile Include="GlutClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Item.cpp">
-      <Filter>Source Files\Items</Filter>
-    </ClCompile>
     <ClCompile Include="Actor.cpp">
       <Filter>Source Files\Actors</Filter>
     </ClCompile>
@@ -147,7 +150,38 @@
       <Filter>Source Files\Actions</Filter>
     </ClCompile>
     <ClCompile Include="Entity.cpp">
-      <Filter>Source Files\Items</Filter>
+      <Filter>Source Files\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="Armor.cpp">
+      <Filter>Source Files\Entities\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Equiptable.cpp">
+      <Filter>Source Files\Entities\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>Source Files\Entities\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Source Files\Entities\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="XMLReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pugixml.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Items.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="test.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MATERIALS.csv">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

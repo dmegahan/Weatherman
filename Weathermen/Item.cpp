@@ -27,10 +27,3 @@ Item::Item(string name, string description, string material, char symbol){
 	setSymbol(symbol);
 	setColor();
 }
-
-void Item::setColor(){
-	this->color[0] = getMaterial().getColor()[0];
-	this->color[1] = getMaterial().getColor()[1];
-	this->color[2] = getMaterial().getColor()[2];
-	this->color[3] = getMaterial().getColor()[3];
-}

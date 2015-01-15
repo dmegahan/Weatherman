@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<items>
+	<armors>
+		<armor Name="something" desc="description" material="material" symbol="A" item_slot="head" weight="2" armor="2" type="leather"/>
+	</armors>
+	<weapons>
+		<weapon Name="something" desc="description" material="material" symbol="A" item_slot="head" weight="2" type="sword"/>
+	</weapons>
+</items>

@@ -22,7 +22,6 @@ class Item : public Entity{
 
 		//use will apply the effect
 		void use();
-
 };
 
 #endif
