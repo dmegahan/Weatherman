@@ -17,10 +17,12 @@ void AI::nextAction(){
 
 	vector < std::array<int, 2>>::iterator beg = viewed_tiles.begin();
 	vector < std::array<int, 2>>::iterator end = viewed_tiles.end();
+	/*
 	sort(beg, end);
-		
+	beg = viewed_tiles.begin();
+	end = viewed_tiles.end();
 	viewed_tiles.erase(unique(beg, end), end);
-
+	*/
 	for (int i = 0; i < viewed_tiles.size(); i++){
 		if (map->isAdjacent(actor->x, actor->y, viewed_tiles[i][0], viewed_tiles[i][1])){
 			Tile* tile = map->getTileAtPos(viewed_tiles[i][0], viewed_tiles[i][1]);

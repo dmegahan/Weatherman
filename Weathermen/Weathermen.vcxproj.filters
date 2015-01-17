@@ -175,9 +175,6 @@
     <Xml Include="Items.xml">
       <Filter>Resource Files</Filter>
     </Xml>
-    <Xml Include="test.xml">
-      <Filter>Resource Files</Filter>
-    </Xml>
   </ItemGroup>
   <ItemGroup>
     <None Include="MATERIALS.csv">

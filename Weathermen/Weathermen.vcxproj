@@ -122,7 +122,6 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Items.xml" />
-    <Xml Include="test.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="MATERIALS.csv" />

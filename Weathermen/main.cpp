@@ -202,7 +202,7 @@ void keyOperations(void) {
 	//valid_key_pressed sets to true if a key that causes an actual action is pressed 
 	//(AKA no menu keys, no tile view keys, etc) cause an action to be used/cause the AI to move/do stuff
 	bool valid_action = false;
-	if (player->state.compare("default") == 0){
+	if (player->state.compare("normal") == 0){
 		if (keyStates['w']) {
 			valid_action = map.newMove(player->x, player->y, player->x, player->y - 1);
 			player->actionEffects();
@@ -317,7 +317,6 @@ int main(int argc, char **argv){
 	all_actors.push_back(test);
 	all_AI.push_back(test_AI);
 
-	FOV();
 	/*
 	Item* item1 = new Item("test1", "test1", "iron", 'U');
 	Item* item2 = new Item();
@@ -338,7 +337,11 @@ int main(int argc, char **argv){
 	map.getTileAtPos(1, 4)->addItem(item2);
 
 	XMLReader reader;
-	reader.readFile("Items.xml");
+	vector<Armor*> items = reader.readFile("Items.xml");
+
+	map.getTileAtPos(1, 6)->addItem(items[0]);
+
+	FOV();
 
 	glutMainLoop();
 

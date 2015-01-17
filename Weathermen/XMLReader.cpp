@@ -8,7 +8,7 @@
 
 using namespace std;
 
-bool XMLReader::readFile(string file_name){
+vector<Armor*> XMLReader::readFile(string file_name){
 	rapidxml::file<> xml_file(file_name.c_str());
 	rapidxml::xml_document<> document;
 	document.parse<0>(xml_file.data()); 
@@ -19,7 +19,7 @@ bool XMLReader::readFile(string file_name){
 		all_armors.push_back(serializeArmor(armor_node));
 	}
 	printf("Done!\n");
-	return false;
+	return all_armors;
 }
 
 Item* XMLReader::serializeItem(rapidxml::xml_node<>* node){
