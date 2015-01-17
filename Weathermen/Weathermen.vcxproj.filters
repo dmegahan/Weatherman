@@ -34,14 +34,14 @@
     <Filter Include="Header Files\Entities">
       <UniqueIdentifier>{7a253999-4b07-4742-8f42-077853b205d7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Entities\Items">
-      <UniqueIdentifier>{f9f8d3e8-f0dc-4f1e-8d61-866bc3b2748e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Entities">
       <UniqueIdentifier>{cb7fac45-674d-4179-a0f9-81ce98d8eb90}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Entities\Items">
       <UniqueIdentifier>{2e7694f8-ebc8-458a-bae2-6be6a7c760e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entities\Items">
+      <UniqueIdentifier>{f9f8d3e8-f0dc-4f1e-8d61-866bc3b2748e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

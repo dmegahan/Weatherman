@@ -1,9 +1,9 @@
-<?xml version="1.0"?>
-<items>
+﻿<items>
 	<armors>
-		<armor Name="something" desc="description" material="material" symbol="A" item_slot="head" weight="2" armor="2" type="leather"/>
+		<armor name="something" desc="description" material="material" symbol="A" item_slot="head" weight="2" armor="2" type="leather"/>
+    <armor Name="something2" desc="description2" material="material2" symbol="B" item_slot="chest" weight="2" armor="2" type="leather"/>
 	</armors>
 	<weapons>
-		<weapon Name="something" desc="description" material="material" symbol="A" item_slot="head" weight="2" type="sword"/>
+		<weapon name="something" desc="description" material="material" symbol="A" item_slot="head" weight="2" type="sword" attack_speed="2.3" attack="5"/>
 	</weapons>
 </items>

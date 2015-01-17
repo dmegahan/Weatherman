@@ -14,11 +14,12 @@ using namespace std;
 class Item : public Entity{
 	private:
 		//maybe make this an object of its own or a enum
-		int weight;
 
 	public:
+		int weight;
+
 		Item();
-		Item(string name, string description, string material, char symbol);
+		Item(string name, string description, string material, char symbol, int weight);
 
 		//use will apply the effect
 		void use();

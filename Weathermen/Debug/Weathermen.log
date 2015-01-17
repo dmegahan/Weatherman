@@ -1,17 +1,15 @@
-﻿Build started 1/15/2015 2:18:47 AM.
+﻿Build started 1/16/2015 7:34:11 PM.
      1>Project "C:\Users\Danny\Documents\Weatherman\Weathermen\Weathermen.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Action.cpp Actor.cpp AI.cpp Armor.cpp Attack.cpp CsvReader.cpp Entity.cpp Equiptable.cpp GlutClass.cpp Item.cpp ItemContainer.cpp main.cpp Map.cpp Material.cpp MeleeAttack.cpp Move.cpp Pickup.cpp pugixml.cpp Tile.cpp tinystr.cpp tinyxml.cpp tinyxmlerror.cpp tinyxmlparser.cpp Weapon.cpp XMLReader.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Action.cpp Actor.cpp AI.cpp Armor.cpp Attack.cpp CsvReader.cpp Entity.cpp Equiptable.cpp GlutClass.cpp Item.cpp ItemContainer.cpp main.cpp Map.cpp Material.cpp MeleeAttack.cpp Move.cpp Pickup.cpp pugixml.cpp Tile.cpp Weapon.cpp XMLReader.cpp
          XMLReader.cpp
+     1>c:\users\danny\documents\weatherman\weathermen\xmlreader.cpp(77): warning C4305: 'initializing' : truncation from 'double' to 'float'
      1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\rapidxml_utils.hpp(40): warning C4244: 'initializing' : conversion from 'std::streamoff' to 'size_t', possible loss of data
                  c:\program files (x86)\microsoft visual studio 12.0\vc\include\rapidxml_utils.hpp(28) : while compiling class template member function 'rapidxml::file<char>::file(const char *)'
-                 c:\users\danny\documents\weatherman\weathermen\xmlreader.cpp(28) : see reference to function template instantiation 'rapidxml::file<char>::file(const char *)' being compiled
-                 c:\users\danny\documents\weatherman\weathermen\xmlreader.cpp(28) : see reference to class template instantiation 'rapidxml::file<char>' being compiled
+                 c:\users\danny\documents\weatherman\weathermen\xmlreader.cpp(12) : see reference to function template instantiation 'rapidxml::file<char>::file(const char *)' being compiled
+                 c:\users\danny\documents\weatherman\weathermen\xmlreader.cpp(12) : see reference to class template instantiation 'rapidxml::file<char>' being compiled
          Weapon.cpp
-         tinyxmlparser.cpp
-         tinyxmlerror.cpp
-         tinyxml.cpp
-         tinystr.cpp
+     1>c:\users\danny\documents\weatherman\weathermen\weapon.cpp(12): warning C4305: '=' : truncation from 'double' to 'float'
          Tile.cpp
      1>c:\users\danny\documents\weatherman\weathermen\tile.cpp(96): warning C4018: '<' : signed/unsigned mismatch
      1>c:\users\danny\documents\weatherman\weathermen\tile.cpp(109): warning C4018: '<' : signed/unsigned mismatch
@@ -41,8 +39,6 @@
      1>c:\users\danny\documents\weatherman\weathermen\entity.cpp(34): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
      1>c:\users\danny\documents\weatherman\weathermen\entity.cpp(35): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
          CsvReader.cpp
-         Generating Code...
-         Compiling...
          Attack.cpp
          Armor.cpp
          AI.cpp
@@ -51,6 +47,8 @@
      1>c:\users\danny\documents\weatherman\weathermen\actor.cpp(123): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
      1>c:\users\danny\documents\weatherman\weathermen\actor.cpp(192): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
      1>c:\users\danny\documents\weatherman\weathermen\actor.cpp(193): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+         Generating Code...
+         Compiling...
          Action.cpp
          Generating Code...
        Link:
@@ -73,10 +71,6 @@
          Debug\Pickup.obj
          Debug\pugixml.obj
          Debug\Tile.obj
-         Debug\tinystr.obj
-         Debug\tinyxml.obj
-         Debug\tinyxmlerror.obj
-         Debug\tinyxmlparser.obj
          Debug\Weapon.obj
          Debug\XMLReader.obj
          Weathermen.vcxproj -> C:\Users\Danny\Documents\Weatherman\Debug\Weathermen.exe
@@ -84,4 +78,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:13.80
+Time Elapsed 00:00:13.76

@@ -17,7 +17,8 @@ private:
 
 public:
 	Weapon();
-	Weapon(string name, string description, string material, char symbol);
+	Weapon(string name, string description, string material, char symbol, int weight, 
+			string item_slot, string weapon_type, int attack, float attack_speed);
 };
 
 #endif

@@ -19,7 +19,8 @@ private:
 
 public:
 	Armor();
-	Armor(string name, string description, string material, char symbol);
+	Armor(string name, string description, string material, char symbol, 
+					int weight, string item_slot, int armor, string type);
 };
 
 #endif

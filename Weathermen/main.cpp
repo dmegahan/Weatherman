@@ -327,8 +327,8 @@ int main(int argc, char **argv){
 	vector<Item*> removed_items = cont->removeAllItems();
 	*/
 
-	Item* item1 = new Item("test1", "test1", "test1", 'U');
-	Item* item2 = new Item("test2", "test2", "test2", 'X');
+	Item* item1 = new Item("test1", "test1", "test1", 'U', 0);
+	Item* item2 = new Item("test2", "test2", "test2", 'X', 0);
 
 	map.getTileAtPos(1, 4)->addItem(item1);
 	map.getTileAtPos(1, 4)->addItem(item2);

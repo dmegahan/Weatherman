@@ -17,7 +17,7 @@ private:
 
 public:
 	Equiptable();
-	Equiptable(string name, string description, string material, char symbol);
+	Equiptable(string name, string description, string material, char symbol, int weight, string item_slot);
 };
 
 #endif

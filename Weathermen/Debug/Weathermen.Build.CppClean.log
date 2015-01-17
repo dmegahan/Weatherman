@@ -1,5 +1,9 @@
 c:\users\danny\documents\weatherman\weathermen\debug\vc120.pdb
 c:\users\danny\documents\weatherman\weathermen\debug\vc120.idb
+c:\users\danny\documents\weatherman\weathermen\debug\actor.obj
+c:\users\danny\documents\weatherman\weathermen\debug\ai.obj
+c:\users\danny\documents\weatherman\weathermen\debug\armor.obj
+c:\users\danny\documents\weatherman\weathermen\debug\attack.obj
 c:\users\danny\documents\weatherman\weathermen\debug\csvreader.obj
 c:\users\danny\documents\weatherman\weathermen\debug\entity.obj
 c:\users\danny\documents\weatherman\weathermen\debug\equiptable.obj
@@ -14,17 +18,9 @@ c:\users\danny\documents\weatherman\weathermen\debug\move.obj
 c:\users\danny\documents\weatherman\weathermen\debug\pickup.obj
 c:\users\danny\documents\weatherman\weathermen\debug\pugixml.obj
 c:\users\danny\documents\weatherman\weathermen\debug\tile.obj
-c:\users\danny\documents\weatherman\weathermen\debug\tinystr.obj
-c:\users\danny\documents\weatherman\weathermen\debug\tinyxml.obj
-c:\users\danny\documents\weatherman\weathermen\debug\tinyxmlerror.obj
-c:\users\danny\documents\weatherman\weathermen\debug\tinyxmlparser.obj
 c:\users\danny\documents\weatherman\weathermen\debug\weapon.obj
 c:\users\danny\documents\weatherman\weathermen\debug\xmlreader.obj
 c:\users\danny\documents\weatherman\weathermen\debug\action.obj
-c:\users\danny\documents\weatherman\weathermen\debug\actor.obj
-c:\users\danny\documents\weatherman\weathermen\debug\ai.obj
-c:\users\danny\documents\weatherman\weathermen\debug\armor.obj
-c:\users\danny\documents\weatherman\weathermen\debug\attack.obj
 c:\users\danny\documents\weatherman\debug\weathermen.ilk
 c:\users\danny\documents\weatherman\debug\weathermen.exe
 c:\users\danny\documents\weatherman\debug\weathermen.pdb

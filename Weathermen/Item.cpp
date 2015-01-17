@@ -14,16 +14,12 @@ string getName();
 string getDescription();
 char getSymbol();
 
-Item::Item(){
-	setName("");
-	setDescription("");
-	setSymbol('%');
+Item::Item() : Entity(){
+	this->weight = 0;
 }
 
-Item::Item(string name, string description, string material, char symbol){
-	setName(name);
-	setDescription(description);
-	//setMaterial(material);
-	setSymbol(symbol);
-	setColor();
+Item::Item(string name, string description, string material, char symbol, int weight) : 
+	Entity(name, description, material, symbol){
+
+	this->weight = weight;
 }
