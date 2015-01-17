@@ -42,6 +42,9 @@ double dx;
 char exit_key = '~';
 
 void display(){
+	/*
+		Display is called constantly while running by openGL, it constantly draws the tiles and updates from the map object
+	*/
 	glClearColor(0.0, 0.0, 0.0, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT);
 	glLoadIdentity();
@@ -65,6 +68,7 @@ void display(){
 	else if (playerY >= MAP_SIZEY - view_range){
 		y_offset = 34;
 	}
+	//positioning where the tiles are drawn
 	glTranslatef(x_offset, y_offset, -10);
 	glutClass.drawTiles();
 	glutSwapBuffers();

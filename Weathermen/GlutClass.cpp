@@ -36,6 +36,10 @@ void GlutClass::InitializeTiles(){
 }
 
 void GlutClass::drawTiles(){
+	/*
+		draws the map
+		- only draws the tiles that are within the draw range of the character
+	*/
 	char text;
 	//calculate the min and max draw range and only show those tile within those bounds
 	int draw_range = 10;
@@ -65,7 +69,11 @@ void GlutClass::drawTiles(){
 }
 
 void GlutClass::renderTile(Tile tile, char c, int posX, int posY){
+	/*
+		draw an individaul tile
+	*/
 	vector<float> color;
+	//if actor on tile and visible, change tile color to actors color and set symbol to actors symbol
 	if (!tile.isEmpty() && tile.VISIBLE){
 		Actor *actor = tile.getActors()[0];
 		color = actor->getColor();
@@ -73,15 +81,20 @@ void GlutClass::renderTile(Tile tile, char c, int posX, int posY){
 	else{
 		color = tile.getColor();
 	}
+	//color the tiles based on their color attributes
+	//draw as black if not discovered
 	if (!tile.discovered){
 		glColor4f(0, 0, 0, 0);
 	}
+	//draw with full color
 	else if (tile.VISIBLE){
 		glColor4f(color[0], color[1], color[2], color[3]);
 	}
+	//if discovered but not visible, gray out the color
 	else if(!tile.VISIBLE){
 		glColor4f(color[0]/2, color[1]/2, color[2]/2, color[3]/2);
 	}
+	//draw tile at this position
 	glRasterPos3f(posX - 9, -posY + 6, -10);
 	glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, c);
 }
