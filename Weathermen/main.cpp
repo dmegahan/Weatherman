@@ -7,7 +7,7 @@
 #include "Material.h"
 #include "CsvReader.h"
 #include "Item.h"
-#include "Map.h"
+#include "GameMap.h"
 #include "Action.h"
 #include "Move.h"
 #include "GlutClass.h"
@@ -25,7 +25,7 @@ using namespace std;
 #define VIEW_RADIUS 5
 
 int playerX, playerY;
-Map map;
+GameMap game_map;
 GlutClass glutClass;
 vector<Actor*> all_actors;
 vector<AI*> all_AI;
@@ -43,19 +43,19 @@ char exit_key = '~';
 
 void display(){
 	/*
-		Display is called constantly while running by openGL, it constantly draws the tiles and updates from the map object
+		Display is called constantly while running by openGL, it constantly draws the tiles and updates from the game_map object
 	*/
 	glClearColor(0.0, 0.0, 0.0, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT);
 	glLoadIdentity();
 	glEnable(GL_TEXTURE_2D);
 	//glTranslatef(-5, 4, -10);
-	//x_offset and y_offset are used to keep the map centered in the middle of the screen
+	//x_offset and y_offset are used to keep the game_map centered in the middle of the screen
 	int x_offset = -playerX + 8; 
 	int y_offset = playerY - 6;
 
 	int view_range = 10;
-	//these if statements will be set to a default number if the edge of the map is seen, so no empty space is shown
+	//these if statements will be set to a default number if the edge of the game_map is seen, so no empty space is shown
 	if (playerX <= view_range){
 		x_offset = -5;
 	}
@@ -94,7 +94,7 @@ void DoFOV(float x, float y){
 	ox = (float)player->x + 0.5f;
 	oy = (float)player->y + 0.5f;
 	for (i = 0; i < player->view_radius; i++){
-		Tile* tile = map.getTileAtPos((int)ox, (int)oy);
+		Tile* tile = game_map.getTileAtPos((int)ox, (int)oy);
 		if (tile != nullptr){
 			tile->VISIBLE = true;
 			tile->discovered = true;
@@ -113,8 +113,8 @@ void DoFOV(float x, float y){
 void FOV(){
 	float x, y;
 	int i;
-	map.resetVisibility();
-	//used for drawing part of the map
+	game_map.resetVisibility();
+	//used for drawing part of the game_map
 	glutClass.setPlayerPos(player->x, player->y);
 	for (i = 0; i < 360; i++){
 		x = cos((float)i*0.01745f);
@@ -125,7 +125,7 @@ void FOV(){
 
 /*
 	Threaded function that will calculate all the actions of the 
-	NPC AI and send them to map to be executed.
+	NPC AI and send them to game_map to be executed.
 */
 void AIActions(void *arg){
 	for (int i = 0; i < all_AI.size(); i++){
@@ -135,7 +135,7 @@ void AIActions(void *arg){
 }
 
 Tile* viewTiles(char exit_key){
-	Tile *last_tile = map.getTileAtPos(playerX, playerY);
+	Tile *last_tile = game_map.getTileAtPos(playerX, playerY);
 	vector<float> color = last_tile->getDefaultColor();
 	last_tile->setColor(color[0], color[1], color[2], color[3]);
 	Tile *selected = nullptr;
@@ -144,7 +144,7 @@ Tile* viewTiles(char exit_key){
 		playerY = playerY - 1;
 		cout << "w pressed!";
 		//tile will be selected, recolor it until another tile is selected
-		selected = map.getTileAtPos(playerX, playerY);
+		selected = game_map.getTileAtPos(playerX, playerY);
 		selected->setColor(255, 255, 0, 0);
 	}
 	else if (keyStates['a']){
@@ -152,7 +152,7 @@ Tile* viewTiles(char exit_key){
 		playerY = playerY;
 		cout << "a pressed!";
 		//tile will be selected, recolor it until another tile is selected
-		selected = map.getTileAtPos(playerX, playerY);
+		selected = game_map.getTileAtPos(playerX, playerY);
 		selected->setColor(255, 255, 0, 0);
 	}
 	else if (keyStates['s']){
@@ -160,7 +160,7 @@ Tile* viewTiles(char exit_key){
 		playerY = playerY + 1;
 		cout << "s pressed!";
 		//tile will be selected, recolor it until another tile is selected
-		selected = map.getTileAtPos(playerX, playerY);
+		selected = game_map.getTileAtPos(playerX, playerY);
 		selected->setColor(255, 255, 0, 0);
 	}
 	else if (keyStates['d']){
@@ -168,7 +168,7 @@ Tile* viewTiles(char exit_key){
 		playerY = playerY;
 		cout << "d pressed!";
 		//tile will be selected, recolor it until another tile is selected
-		selected = map.getTileAtPos(playerX, playerY);
+		selected = game_map.getTileAtPos(playerX, playerY);
 		selected->setColor(255, 255, 0, 0);
 	}
 	else if (keyStates[exit_key]){
@@ -179,7 +179,7 @@ Tile* viewTiles(char exit_key){
 	}
 	else if (keyStates[13]){
 		//enter key pressed, select the tile, exit the state, and evaluate the selected tile
-		selected = map.getTileAtPos(playerX, playerY);
+		selected = game_map.getTileAtPos(playerX, playerY);
 		vector<float> color = selected->getDefaultColor();
 		selected->setColor(color[0], color[1], color[2], color[3]);
 		playerX = player->x;
@@ -197,34 +197,34 @@ void keyOperations(void) {
 	//def needs cleanup, keys pressed should call a certain method/object (aka movement object that calls execute)
 
 	//When a key is pressed, add a action to the queue
-	//then execute that queue (AI will add moves to it as well) and update map and call display
+	//then execute that queue (AI will add moves to it as well) and update game_map and call display
 
 	//valid_key_pressed sets to true if a key that causes an actual action is pressed 
 	//(AKA no menu keys, no tile view keys, etc) cause an action to be used/cause the AI to move/do stuff
 	bool valid_action = false;
 	if (player->state.compare("normal") == 0){
 		if (keyStates['w']) {
-			valid_action = map.newMove(player->x, player->y, player->x, player->y - 1);
+			valid_action = game_map.newMove(player->x, player->y, player->x, player->y - 1);
 			player->actionEffects();
 			cout << "w pressed!";
 		}
 		else if (keyStates['a']){
-			valid_action = map.newMove(player->x, player->y, player->x - 1, player->y);
+			valid_action = game_map.newMove(player->x, player->y, player->x - 1, player->y);
 			player->actionEffects();
 			cout << "a pressed!";
 		}
 		else if (keyStates['s']){
-			valid_action = map.newMove(player->x, player->y, player->x, player->y + 1);
+			valid_action = game_map.newMove(player->x, player->y, player->x, player->y + 1);
 			player->actionEffects();
 			cout << "s pressed!";
 		}
 		else if (keyStates['d']){
-			valid_action = map.newMove(player->x, player->y, player->x + 1, player->y);
+			valid_action = game_map.newMove(player->x, player->y, player->x + 1, player->y);
 			player->actionEffects();
 			cout << "d pressed!";
 		}
 		else if (keyStates['e']){
-			valid_action = map.newPickUp(player->x, player->y);
+			valid_action = game_map.newPickUp(player->x, player->y);
 			player->actionEffects();
 		}
 		else if (keyStates['v']){
@@ -248,7 +248,7 @@ void keyOperations(void) {
 		}
 
 		if (valid_action == true){
-			map.executeQueue();
+			game_map.executeQueue();
 			playerX = player->x;
 			playerY = player->y;
 			HANDLE hThread = (HANDLE)_beginthread(AIActions, 0, 0);
@@ -266,10 +266,10 @@ void keyOperations(void) {
 				vector<Actor*> actors = returned->getActors();
 				if (actors.size() > 0){
 					Actor *target = actors[0];
-					bool valid_action = map.newMeleeAttack(player, target);
+					bool valid_action = game_map.newMeleeAttack(player, target);
 
 					if (valid_action){
-						map.executeQueue();
+						game_map.executeQueue();
 						playerX = player->x;
 						playerY = player->y;
 						HANDLE hThread = (HANDLE)_beginthread(AIActions, 0, 0);
@@ -282,8 +282,8 @@ void keyOperations(void) {
 }	
 
 int main(int argc, char **argv){
-	map = Map(MAP_SIZEX, MAP_SIZEY);
-	glutClass = GlutClass(&map);
+	game_map = GameMap(MAP_SIZEX, MAP_SIZEY);
+	glutClass = GlutClass(&game_map);
 
 	glutInit(&argc, argv);
 	glutClass.glutInitialize();
@@ -303,16 +303,18 @@ int main(int argc, char **argv){
 
 	//all_actors.push_back(player);
 
-	map.createMap();
+	game_map.createMap();
 
 	glutClass.InitializeTiles();
 
-	map.getTileAtPos(playerX, playerY)->addActor(player);
-	map.getTileAtPos(0, 3)->spawnItem();
+	game_map.getTileAtPos(playerX, playerY)->addActor(player);
+	game_map.getTileAtPos(0, 3)->spawnItem();
 
 	Actor *test = new Actor(1, 1, "Dave", "Dave", "Dave", 'D');
-	AI *test_AI = new AI(test, &map);
-	map.getTileAtPos(test->x, test->y)->addActor(test);
+	AI *test_AI = new AI(test, &game_map);
+
+	test_AI->aStarSearch(&game_map, 1, 1, 3, 4);
+	game_map.getTileAtPos(test->x, test->y)->addActor(test);
 
 	all_actors.push_back(test);
 	all_AI.push_back(test_AI);
@@ -333,15 +335,19 @@ int main(int argc, char **argv){
 	Item* item1 = new Item("test1", "test1", "test1", 'U', 0);
 	Item* item2 = new Item("test2", "test2", "test2", 'X', 0);
 
-	map.getTileAtPos(1, 4)->addItem(item1);
-	map.getTileAtPos(1, 4)->addItem(item2);
+	game_map.getTileAtPos(1, 4)->addItem(item1);
+	game_map.getTileAtPos(1, 4)->addItem(item2);
 
 	XMLReader reader;
 	vector<Armor*> items = reader.readFile("Items.xml");
 
-	map.getTileAtPos(1, 6)->addItem(items[0]);
+	game_map.getTileAtPos(1, 6)->addItem(items[0]);
 
 	FOV();
+
+	game_map.getNeighbors(2, 2);
+	game_map.getNeighbors(0, 0);
+	game_map.getNeighbors(game_map.getSizeX() - 1, game_map.getSizeY() - 1);
 
 	glutMainLoop();
 

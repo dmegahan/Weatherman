@@ -7,7 +7,7 @@ GlutClass::GlutClass(){
 
 }
 
-GlutClass::GlutClass(Map *_map){
+GlutClass::GlutClass(GameMap *_map){
 	map = _map;
 }
 

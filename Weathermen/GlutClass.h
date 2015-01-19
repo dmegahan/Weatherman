@@ -6,7 +6,7 @@
 #include <GL/glew.h>
 #include <GL/glut.h>
 
-#include "Map.h"
+#include "GameMap.h"
 #include "Tile.h"
 
 using namespace std;
@@ -16,14 +16,14 @@ using namespace std;
 
 class GlutClass{
 private:
-	Map *map;
+	GameMap *map;
 	int player_x;
 	int player_y;
 public:
 	vector<Tile*> tiles_to_update;
 
 	GlutClass();
-	GlutClass(Map *_map);
+	GlutClass(GameMap *_map);
 
 	void InitializeTiles();
 

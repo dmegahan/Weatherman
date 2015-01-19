@@ -81,13 +81,14 @@
     <ClInclude Include="AI.h" />
     <ClInclude Include="Armor.h" />
     <ClInclude Include="Attack.h" />
+    <ClInclude Include="Coordinate.h" />
     <ClInclude Include="CsvReader.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Equiptable.h" />
     <ClInclude Include="GlutClass.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemContainer.h" />
-    <ClInclude Include="Map.h" />
+    <ClInclude Include="GameMap.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="MeleeAttack.h" />
     <ClInclude Include="Move.h" />
@@ -103,6 +104,7 @@
     <ClCompile Include="AI.cpp" />
     <ClCompile Include="Armor.cpp" />
     <ClCompile Include="Attack.cpp" />
+    <ClCompile Include="Coordinate.cpp" />
     <ClCompile Include="CsvReader.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Equiptable.cpp" />
@@ -110,7 +112,7 @@
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemContainer.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="GameMap.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="MeleeAttack.cpp" />
     <ClCompile Include="Move.cpp" />
