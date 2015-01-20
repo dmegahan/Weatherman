@@ -313,7 +313,6 @@ int main(int argc, char **argv){
 	Actor *test = new Actor(1, 1, "Dave", "Dave", "Dave", 'D');
 	AI *test_AI = new AI(test, &game_map);
 
-	test_AI->aStarSearch(&game_map, 1, 1, 3, 4);
 	game_map.getTileAtPos(test->x, test->y)->addActor(test);
 
 	all_actors.push_back(test);

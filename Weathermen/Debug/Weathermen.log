@@ -1,4 +1,4 @@
-﻿Build started 1/19/2015 10:43:51 PM.
+﻿Build started 1/20/2015 6:14:32 AM.
      1>Project "C:\Users\Danny\Documents\Weatherman\Weathermen\Weathermen.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Action.cpp Actor.cpp AI.cpp Armor.cpp Attack.cpp Coordinate.cpp CsvReader.cpp Entity.cpp Equiptable.cpp GlutClass.cpp Item.cpp ItemContainer.cpp main.cpp GameMap.cpp Material.cpp MeleeAttack.cpp Move.cpp Pickup.cpp pugixml.cpp Tile.cpp Weapon.cpp XMLReader.cpp
@@ -43,9 +43,8 @@
          Attack.cpp
          Armor.cpp
          AI.cpp
-     1>c:\users\danny\documents\weatherman\weathermen\ai.cpp(28): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\danny\documents\weatherman\weathermen\ai.cpp(56): warning C4018: '<' : signed/unsigned mismatch
          Generating Code...
-     1>c:\users\danny\documents\weatherman\weathermen\ai.cpp(167): warning C4715: 'AI::aStarSearch' : not all control paths return a value
          Compiling...
          Actor.cpp
      1>c:\users\danny\documents\weatherman\weathermen\actor.cpp(123): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
@@ -81,4 +80,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:11.55
+Time Elapsed 00:00:11.34
