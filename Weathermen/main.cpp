@@ -345,10 +345,6 @@ int main(int argc, char **argv){
 
 	FOV();
 
-	game_map.getNeighbors(2, 2);
-	game_map.getNeighbors(0, 0);
-	game_map.getNeighbors(game_map.getSizeX() - 1, game_map.getSizeY() - 1);
-
 	glutMainLoop();
 
 	//delete player;

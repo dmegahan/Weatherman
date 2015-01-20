@@ -82,8 +82,18 @@ void AI::FOV(){
 	}
 }
 
-void AI::make_path(map<array<int, 2>, array<int, 2>> came_from, array<int, 2> current){
-
+/*
+	return a vector of points that make a path
+*/
+vector<array<int, 2>> AI::make_path(map<array<int, 2>, array<int, 2>> came_from, array<int, 2> current){
+	
+	vector<array<int, 2>> total_path;
+	total_path.push_back(current);
+	while (came_from.find(current) != came_from.end()){
+		current = came_from[current];
+		total_path.push_back(current);
+	}
+	return total_path;
 }
 
 int AI::heuristic(int x1, int y1, int x2, int y2){
@@ -109,15 +119,15 @@ bool AI::isEqual(array<int, 2> a1, array<int, 2> a2){
 	return false;
 }
 
-void AI::aStarSearch(GameMap *map_obj, int orig_x, int orig_y, int dest_x, int dest_y){
+vector<array<int, 2>> AI::aStarSearch(GameMap *map_obj, int orig_x, int orig_y, int dest_x, int dest_y){
 	array<int, 2> start = { orig_x, orig_y };
 	array<int, 2> end = { dest_x, dest_y };
 	vector<array<int, 2>> closed_set;
 	vector<array<int, 2>> open_set;
 	map<array<int, 2>, array<int, 2>> path;
 	open_set.push_back(start);
-	map<array<int, 2>, int>g_score;
-	map<array<int, 2>, int>f_score;
+	map<array<int, 2>, int>g_score; //cost from start along best path
+	map<array<int, 2>, int>f_score; //estimated total cost from start to goal
 
 	g_score[start] = 0;
 	f_score[start] = g_score[start] + heuristic(orig_x, orig_y, dest_x, dest_y);
@@ -130,13 +140,19 @@ void AI::aStarSearch(GameMap *map_obj, int orig_x, int orig_y, int dest_x, int d
 		open_set.erase(remove(open_set.begin(), open_set.end(), current), open_set.end());
 		closed_set.push_back(current);
 
+		//get all neighbors at current
 		vector<array<int, 2>> neighbors = map_obj->getNeighbors(current[0], current[1]);
 		for each (array<int, 2> neighbor in neighbors){
+			if (!map_obj->getTileAtPos(neighbor[0], neighbor[1])->isPassable()){
+				continue;
+			}
+			//if neighbor in closed_set
 			if (find(closed_set.begin(), closed_set.end(), neighbor) != closed_set.end()){
 				continue;
 			}
 			int tentative_g_score = g_score[current] + 1;
 
+			//if neighbor is not in openset or tentative_g_score < g_score[neighbor]
 			if (find(open_set.begin(), open_set.end(), neighbor) == open_set.end() || tentative_g_score < g_score[neighbor]){
 				path[neighbor] = current;
 				g_score[neighbor] = tentative_g_score;
