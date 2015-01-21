@@ -2,15 +2,15 @@
 #include <vector>
 #include <queue>
 
-#include "Tile.h"
-#include "Actor.h"
-#include "Material.h"
-#include "Item.h"
-#include "GameMap.h"
-#include "Action.h"
-#include "Move.h"
+#include "Game World/Tile.h"
+#include "Actors/Actor.h"
+#include "Entities/Material.h"
+#include "Entities/Items/Item.h"
+#include "Game World/GameMap.h"
+#include "Actions/Action.h"
+#include "Actions/Move.h"
 #include "GlutClass.h"
-#include "AI.h"
+#include "AI/AI.h"
 #include "ItemContainer.h"
 #include "XMLReader.h"
 

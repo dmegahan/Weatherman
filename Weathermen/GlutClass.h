@@ -6,8 +6,8 @@
 #include <GL/glew.h>
 #include <GL/glut.h>
 
-#include "GameMap.h"
-#include "Tile.h"
+#include "Game World/GameMap.h"
+#include "Game World/Tile.h"
 
 using namespace std;
 

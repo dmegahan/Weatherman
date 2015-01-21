@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Action Headers">
-      <UniqueIdentifier>{71f0f169-fa4f-4b8a-b9f9-b00fc4d6f157}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Actions">
       <UniqueIdentifier>{94aec025-427c-4af6-8673-53fc88c24416}</UniqueIdentifier>
     </Filter>
@@ -49,129 +46,132 @@
     <Filter Include="Source Files\Game World">
       <UniqueIdentifier>{4a816f25-7b44-470b-940f-c4caa962b70a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Actions">
+      <UniqueIdentifier>{71f0f169-fa4f-4b8a-b9f9-b00fc4d6f157}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Action.h">
-      <Filter>Header Files\Action Headers</Filter>
+    <ClInclude Include="Actions\Action.h">
+      <Filter>Header Files\Actions</Filter>
     </ClInclude>
-    <ClInclude Include="Move.h">
-      <Filter>Header Files\Action Headers</Filter>
+    <ClInclude Include="Actions\Attack.h">
+      <Filter>Header Files\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\MeleeAttack.h">
+      <Filter>Header Files\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\Move.h">
+      <Filter>Header Files\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\Pickup.h">
+      <Filter>Header Files\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actors\Actor.h">
+      <Filter>Header Files\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\AI.h">
+      <Filter>Header Files\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\Items\Armor.h">
+      <Filter>Header Files\Entities\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\Items\Equiptable.h">
+      <Filter>Header Files\Entities\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\Items\Item.h">
+      <Filter>Header Files\Entities\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\Material.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\Object.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\Entity.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\Items\Weapon.h">
+      <Filter>Header Files\Entities\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Game World\Coordinate.h">
+      <Filter>Header Files\Game World</Filter>
+    </ClInclude>
+    <ClInclude Include="Game World\GameMap.h">
+      <Filter>Header Files\Game World</Filter>
+    </ClInclude>
+    <ClInclude Include="Game World\Tile.h">
+      <Filter>Header Files\Game World</Filter>
     </ClInclude>
     <ClInclude Include="GlutClass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Actor.h">
-      <Filter>Header Files\Actors</Filter>
-    </ClInclude>
-    <ClInclude Include="AI.h">
-      <Filter>Header Files\AI</Filter>
-    </ClInclude>
     <ClInclude Include="ItemContainer.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Pickup.h">
-      <Filter>Header Files\Action Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Attack.h">
-      <Filter>Header Files\Action Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="MeleeAttack.h">
-      <Filter>Header Files\Action Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Entity.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="Item.h">
-      <Filter>Header Files\Entities\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="Weapon.h">
-      <Filter>Header Files\Entities\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="Equiptable.h">
-      <Filter>Header Files\Entities\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="Armor.h">
-      <Filter>Header Files\Entities\Items</Filter>
     </ClInclude>
     <ClInclude Include="XMLReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Tile.h">
-      <Filter>Header Files\Game World</Filter>
-    </ClInclude>
-    <ClInclude Include="GameMap.h">
-      <Filter>Header Files\Game World</Filter>
-    </ClInclude>
-    <ClInclude Include="Coordinate.h">
-      <Filter>Header Files\Game World</Filter>
-    </ClInclude>
-    <ClInclude Include="Material.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Action.cpp">
+    <ClCompile Include="Actions\Action.cpp">
       <Filter>Source Files\Actions</Filter>
     </ClCompile>
-    <ClCompile Include="Move.cpp">
+    <ClCompile Include="Actions\Attack.cpp">
       <Filter>Source Files\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\MeleeAttack.cpp">
+      <Filter>Source Files\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\Move.cpp">
+      <Filter>Source Files\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\Pickup.cpp">
+      <Filter>Source Files\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actors\Actor.cpp">
+      <Filter>Source Files\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\AI.cpp">
+      <Filter>Source Files\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\Items\Armor.cpp">
+      <Filter>Source Files\Entities\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\Items\Equiptable.cpp">
+      <Filter>Source Files\Entities\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\Items\Item.cpp">
+      <Filter>Source Files\Entities\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\Items\Weapon.cpp">
+      <Filter>Source Files\Entities\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\Entity.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\Material.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Game World\Coordinate.cpp">
+      <Filter>Source Files\Game World</Filter>
+    </ClCompile>
+    <ClCompile Include="Game World\GameMap.cpp">
+      <Filter>Source Files\Game World</Filter>
+    </ClCompile>
+    <ClCompile Include="Game World\Tile.cpp">
+      <Filter>Source Files\Game World</Filter>
     </ClCompile>
     <ClCompile Include="GlutClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Actor.cpp">
-      <Filter>Source Files\Actors</Filter>
-    </ClCompile>
-    <ClCompile Include="AI.cpp">
-      <Filter>Source Files\AI</Filter>
-    </ClCompile>
     <ClCompile Include="ItemContainer.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Pickup.cpp">
-      <Filter>Source Files\Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="Attack.cpp">
-      <Filter>Source Files\Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="MeleeAttack.cpp">
-      <Filter>Source Files\Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="Armor.cpp">
-      <Filter>Source Files\Entities\Items</Filter>
-    </ClCompile>
-    <ClCompile Include="Equiptable.cpp">
-      <Filter>Source Files\Entities\Items</Filter>
-    </ClCompile>
-    <ClCompile Include="Weapon.cpp">
-      <Filter>Source Files\Entities\Items</Filter>
-    </ClCompile>
-    <ClCompile Include="Item.cpp">
-      <Filter>Source Files\Entities\Items</Filter>
     </ClCompile>
     <ClCompile Include="XMLReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Tile.cpp">
-      <Filter>Source Files\Game World</Filter>
-    </ClCompile>
-    <ClCompile Include="GameMap.cpp">
-      <Filter>Source Files\Game World</Filter>
-    </ClCompile>
-    <ClCompile Include="Coordinate.cpp">
-      <Filter>Source Files\Game World</Filter>
-    </ClCompile>
-    <ClCompile Include="Material.cpp">
-      <Filter>Source Files\Entities</Filter>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

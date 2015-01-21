@@ -7,10 +7,10 @@
 #include <rapidxml_print.hpp>
 #include <vector>
 
-#include "Entity.h"
-#include "Item.h"
-#include "Weapon.h"
-#include "Armor.h"
+#include "Entities/Entity.h"
+#include "Entities/Items/Item.h"
+#include "Entities/Items/Weapon.h"
+#include "Entities/Items/Armor.h"
 
 using namespace std;
 

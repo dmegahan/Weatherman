@@ -5,7 +5,7 @@
 #include <iostream>
 #include <vector>
 
-#include "Item.h"
+#include "Entities/Items/Item.h"
 
 using namespace std;
 

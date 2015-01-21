@@ -1,54 +1,78 @@
-﻿Build started 1/20/2015 8:20:55 PM.
+﻿Build started 1/20/2015 10:46:05 PM.
      1>Project "C:\Users\Danny\Documents\Weatherman\Weathermen\Weathermen.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Action.cpp Actor.cpp AI.cpp Armor.cpp Attack.cpp Coordinate.cpp Entity.cpp Equiptable.cpp GlutClass.cpp Item.cpp ItemContainer.cpp main.cpp GameMap.cpp Material.cpp MeleeAttack.cpp Move.cpp Pickup.cpp Tile.cpp Weapon.cpp XMLReader.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /FR"Debug\\" /Gd /TP /analyze- /errorReport:prompt Actions\Action.cpp Actions\Attack.cpp Actions\MeleeAttack.cpp Actions\Move.cpp Actions\Pickup.cpp Actors\Actor.cpp AI\AI.cpp Entities\Entity.cpp Entities\Items\Armor.cpp Entities\Items\Equiptable.cpp Entities\Items\Item.cpp Entities\Items\Weapon.cpp Entities\Material.cpp "Game World\Coordinate.cpp" "Game World\GameMap.cpp" "Game World\Tile.cpp" GlutClass.cpp ItemContainer.cpp main.cpp XMLReader.cpp
          XMLReader.cpp
      1>c:\users\danny\documents\weatherman\weathermen\xmlreader.cpp(74): warning C4305: 'initializing' : truncation from 'double' to 'float'
      1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\rapidxml_utils.hpp(40): warning C4244: 'initializing' : conversion from 'std::streamoff' to 'size_t', possible loss of data
                  c:\program files (x86)\microsoft visual studio 12.0\vc\include\rapidxml_utils.hpp(28) : while compiling class template member function 'rapidxml::file<char>::file(const char *)'
                  c:\users\danny\documents\weatherman\weathermen\xmlreader.cpp(9) : see reference to function template instantiation 'rapidxml::file<char>::file(const char *)' being compiled
                  c:\users\danny\documents\weatherman\weathermen\xmlreader.cpp(9) : see reference to class template instantiation 'rapidxml::file<char>' being compiled
-         Weapon.cpp
-     1>c:\users\danny\documents\weatherman\weathermen\weapon.cpp(12): warning C4305: '=' : truncation from 'double' to 'float'
-         Tile.cpp
-     1>c:\users\danny\documents\weatherman\weathermen\tile.cpp(96): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\danny\documents\weatherman\weathermen\tile.cpp(109): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\danny\documents\weatherman\weathermen\tile.cpp(131): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\danny\documents\weatherman\weathermen\tile.cpp(144): warning C4018: '<' : signed/unsigned mismatch
-         Pickup.cpp
-         Move.cpp
-         MeleeAttack.cpp
-     1>c:\users\danny\documents\weatherman\weathermen\meleeattack.cpp(19): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\danny\documents\weatherman\weathermen\meleeattack.cpp(29): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\danny\documents\weatherman\weathermen\meleeattack.cpp(35): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
-         Material.cpp
-         GameMap.cpp
          main.cpp
-     1>c:\users\danny\documents\weatherman\weathermen\main.cpp(8): fatal error C1083: Cannot open include file: 'CsvReader.h': No such file or directory
+     1>c:\users\danny\documents\weatherman\weathermen\main.cpp(130): warning C4018: '<' : signed/unsigned mismatch
          ItemContainer.cpp
      1>c:\users\danny\documents\weatherman\weathermen\itemcontainer.cpp(14): warning C4018: '<' : signed/unsigned mismatch
      1>c:\users\danny\documents\weatherman\weathermen\itemcontainer.cpp(20): warning C4018: '<' : signed/unsigned mismatch
-         Item.cpp
          GlutClass.cpp
-         Equiptable.cpp
-         Entity.cpp
-     1>c:\users\danny\documents\weatherman\weathermen\entity.cpp(32): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\danny\documents\weatherman\weathermen\entity.cpp(33): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\danny\documents\weatherman\weathermen\entity.cpp(34): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\danny\documents\weatherman\weathermen\entity.cpp(35): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+         Tile.cpp
+     1>c:\users\danny\documents\weatherman\weathermen\game world\tile.cpp(96): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\danny\documents\weatherman\weathermen\game world\tile.cpp(109): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\danny\documents\weatherman\weathermen\game world\tile.cpp(131): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\danny\documents\weatherman\weathermen\game world\tile.cpp(144): warning C4018: '<' : signed/unsigned mismatch
+         GameMap.cpp
          Coordinate.cpp
-         Attack.cpp
+         Material.cpp
+         Weapon.cpp
+     1>c:\users\danny\documents\weatherman\weathermen\entities\items\weapon.cpp(12): warning C4305: '=' : truncation from 'double' to 'float'
+         Item.cpp
+         Equiptable.cpp
          Armor.cpp
+         Entity.cpp
+     1>c:\users\danny\documents\weatherman\weathermen\entities\entity.cpp(32): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\danny\documents\weatherman\weathermen\entities\entity.cpp(33): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\danny\documents\weatherman\weathermen\entities\entity.cpp(34): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\danny\documents\weatherman\weathermen\entities\entity.cpp(35): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
          AI.cpp
-     1>c:\users\danny\documents\weatherman\weathermen\ai.cpp(56): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\danny\documents\weatherman\weathermen\ai\ai.cpp(56): warning C4018: '<' : signed/unsigned mismatch
          Actor.cpp
-     1>c:\users\danny\documents\weatherman\weathermen\actor.cpp(123): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
-     1>c:\users\danny\documents\weatherman\weathermen\actor.cpp(187): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\danny\documents\weatherman\weathermen\actor.cpp(188): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\danny\documents\weatherman\weathermen\actors\actor.cpp(123): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\danny\documents\weatherman\weathermen\actors\actor.cpp(187): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\danny\documents\weatherman\weathermen\actors\actor.cpp(188): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+         Pickup.cpp
+         Move.cpp
+         MeleeAttack.cpp
+     1>c:\users\danny\documents\weatherman\weathermen\actions\meleeattack.cpp(19): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\danny\documents\weatherman\weathermen\actions\meleeattack.cpp(29): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\danny\documents\weatherman\weathermen\actions\meleeattack.cpp(35): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+         Attack.cpp
          Action.cpp
          Generating Code...
-     1>Done Building Project "C:\Users\Danny\Documents\Weatherman\Weathermen\Weathermen.vcxproj" (Rebuild target(s)) -- FAILED.
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Danny\Documents\Weatherman\Debug\Weathermen.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Danny\Documents\Weatherman\Debug\Weathermen.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Danny\Documents\Weatherman\Debug\Weathermen.lib" /MACHINE:X86 Debug\Action.obj
+         Debug\Attack.obj
+         Debug\MeleeAttack.obj
+         Debug\Move.obj
+         Debug\Pickup.obj
+         Debug\Actor.obj
+         Debug\AI.obj
+         Debug\Entity.obj
+         Debug\Armor.obj
+         Debug\Equiptable.obj
+         Debug\Item.obj
+         Debug\Weapon.obj
+         Debug\Material.obj
+         Debug\Coordinate.obj
+         Debug\GameMap.obj
+         Debug\Tile.obj
+         Debug\GlutClass.obj
+         Debug\ItemContainer.obj
+         Debug\main.obj
+         Debug\XMLReader.obj
+         Weathermen.vcxproj -> C:\Users\Danny\Documents\Weatherman\Debug\Weathermen.exe
+       BscMake:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\bscmake.exe /nologo /o"C:\Users\Danny\Documents\Weatherman\Debug\Weathermen.bsc" /n Debug\Action.sbr Debug\Attack.sbr Debug\MeleeAttack.sbr Debug\Move.sbr Debug\Pickup.sbr Debug\Actor.sbr Debug\AI.sbr Debug\Entity.sbr Debug\Armor.sbr Debug\Equiptable.sbr Debug\Item.sbr Debug\Weapon.sbr Debug\Material.sbr Debug\Coordinate.sbr Debug\GameMap.sbr Debug\Tile.sbr Debug\GlutClass.sbr Debug\ItemContainer.sbr Debug\main.sbr Debug\XMLReader.sbr
+     1>Done Building Project "C:\Users\Danny\Documents\Weatherman\Weathermen\Weathermen.vcxproj" (Rebuild target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:16.86
+Time Elapsed 00:00:22.61

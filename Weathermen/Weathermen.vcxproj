@@ -52,11 +52,15 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -76,47 +80,47 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Action.h" />
-    <ClInclude Include="Actor.h" />
-    <ClInclude Include="AI.h" />
-    <ClInclude Include="Armor.h" />
-    <ClInclude Include="Attack.h" />
-    <ClInclude Include="Coordinate.h" />
-    <ClInclude Include="Entity.h" />
-    <ClInclude Include="Equiptable.h" />
+    <ClInclude Include="Actions\Action.h" />
+    <ClInclude Include="Actions\Attack.h" />
+    <ClInclude Include="Actions\MeleeAttack.h" />
+    <ClInclude Include="Actions\Move.h" />
+    <ClInclude Include="Actions\Pickup.h" />
+    <ClInclude Include="Actors\Actor.h" />
+    <ClInclude Include="AI\AI.h" />
+    <ClInclude Include="Entities\Entity.h" />
+    <ClInclude Include="Entities\Items\Armor.h" />
+    <ClInclude Include="Entities\Items\Equiptable.h" />
+    <ClInclude Include="Entities\Items\Item.h" />
+    <ClInclude Include="Entities\Items\Weapon.h" />
+    <ClInclude Include="Entities\Material.h" />
+    <ClInclude Include="Entities\Object.h" />
+    <ClInclude Include="Game World\Coordinate.h" />
+    <ClInclude Include="Game World\GameMap.h" />
+    <ClInclude Include="Game World\Tile.h" />
     <ClInclude Include="GlutClass.h" />
-    <ClInclude Include="Item.h" />
     <ClInclude Include="ItemContainer.h" />
-    <ClInclude Include="GameMap.h" />
-    <ClInclude Include="Material.h" />
-    <ClInclude Include="MeleeAttack.h" />
-    <ClInclude Include="Move.h" />
-    <ClInclude Include="Object.h" />
-    <ClInclude Include="Pickup.h" />
-    <ClInclude Include="Tile.h" />
-    <ClInclude Include="Weapon.h" />
     <ClInclude Include="XMLReader.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Action.cpp" />
-    <ClCompile Include="Actor.cpp" />
-    <ClCompile Include="AI.cpp" />
-    <ClCompile Include="Armor.cpp" />
-    <ClCompile Include="Attack.cpp" />
-    <ClCompile Include="Coordinate.cpp" />
-    <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="Equiptable.cpp" />
+    <ClCompile Include="Actions\Action.cpp" />
+    <ClCompile Include="Actions\Attack.cpp" />
+    <ClCompile Include="Actions\MeleeAttack.cpp" />
+    <ClCompile Include="Actions\Move.cpp" />
+    <ClCompile Include="Actions\Pickup.cpp" />
+    <ClCompile Include="Actors\Actor.cpp" />
+    <ClCompile Include="AI\AI.cpp" />
+    <ClCompile Include="Entities\Entity.cpp" />
+    <ClCompile Include="Entities\Items\Armor.cpp" />
+    <ClCompile Include="Entities\Items\Equiptable.cpp" />
+    <ClCompile Include="Entities\Items\Item.cpp" />
+    <ClCompile Include="Entities\Items\Weapon.cpp" />
+    <ClCompile Include="Entities\Material.cpp" />
+    <ClCompile Include="Game World\Coordinate.cpp" />
+    <ClCompile Include="Game World\GameMap.cpp" />
+    <ClCompile Include="Game World\Tile.cpp" />
     <ClCompile Include="GlutClass.cpp" />
-    <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemContainer.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="GameMap.cpp" />
-    <ClCompile Include="Material.cpp" />
-    <ClCompile Include="MeleeAttack.cpp" />
-    <ClCompile Include="Move.cpp" />
-    <ClCompile Include="Pickup.cpp" />
-    <ClCompile Include="Tile.cpp" />
-    <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="XMLReader.cpp" />
   </ItemGroup>
   <ItemGroup>
