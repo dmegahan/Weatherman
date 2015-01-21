@@ -30,7 +30,7 @@ public:
 	void drawTiles();
 	void drawTilesCallback();
 
-	void FreeTexture(GLuint texture);
+	void FreeTexture(GLuint texture){ glDeleteTextures(1, &texture); }
 	void renderTile(Tile tile, char c, int posX, int posY);
 	void display(void);
 	static void reshape(int width, int height);

@@ -1,9 +1,6 @@
 #include <iostream>
 #include <istream>
-#include <string>
 #include <vector>
-#include <fstream>
-
 #include "XMLReader.h"
 
 using namespace std;

@@ -82,7 +82,6 @@
     <ClInclude Include="Armor.h" />
     <ClInclude Include="Attack.h" />
     <ClInclude Include="Coordinate.h" />
-    <ClInclude Include="CsvReader.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Equiptable.h" />
     <ClInclude Include="GlutClass.h" />
@@ -105,7 +104,6 @@
     <ClCompile Include="Armor.cpp" />
     <ClCompile Include="Attack.cpp" />
     <ClCompile Include="Coordinate.cpp" />
-    <ClCompile Include="CsvReader.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Equiptable.cpp" />
     <ClCompile Include="GlutClass.cpp" />
@@ -117,7 +115,6 @@
     <ClCompile Include="MeleeAttack.cpp" />
     <ClCompile Include="Move.cpp" />
     <ClCompile Include="Pickup.cpp" />
-    <ClCompile Include="pugixml.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="XMLReader.cpp" />

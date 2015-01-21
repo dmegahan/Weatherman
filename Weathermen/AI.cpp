@@ -23,7 +23,7 @@ void AI::remove_duplicate_from_vector(vector<array<int, 2>> vec, array<int, 2> i
 }
 
 void AI::nextAction(){
-	//viewed_tiles.clear();
+	viewed_tiles.clear();
 	FOV();
 
 	//check if current tile has any items
@@ -145,10 +145,6 @@ std::deque<array<int, 2>> AI::make_path(map<array<int, 2>, array<int, 2>> came_f
 		total_path.push_back(current);
 	}
 	return total_path;
-}
-
-int AI::heuristic(int x1, int y1, int x2, int y2){
-	return abs(x1 - x2) + abs(y1 - y2);
 }
 
 array<int, 2> AI::lowestScore(vector<array<int, 2>> open_set, map<array<int, 2>, int> scores){

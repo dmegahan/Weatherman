@@ -65,7 +65,7 @@ class Actor{
 		string getType(){ return actor_type; }
 		char getSymbol(){ return actor_symbol; }
 
-		ItemContainer* getInventory();
+		ItemContainer* getInventory(){ return inventory; }
 };
 
 #endif

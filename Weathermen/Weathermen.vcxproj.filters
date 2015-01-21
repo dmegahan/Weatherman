@@ -43,17 +43,14 @@
     <Filter Include="Header Files\Entities\Items">
       <UniqueIdentifier>{f9f8d3e8-f0dc-4f1e-8d61-866bc3b2748e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Game World">
+      <UniqueIdentifier>{614f5747-a5dd-44cb-b82d-7be1f9842b76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game World">
+      <UniqueIdentifier>{4a816f25-7b44-470b-940f-c4caa962b70a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Tile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Material.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CsvReader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Action.h">
       <Filter>Header Files\Action Headers</Filter>
     </ClInclude>
@@ -102,24 +99,21 @@
     <ClInclude Include="XMLReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Coordinate.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Tile.h">
+      <Filter>Header Files\Game World</Filter>
     </ClInclude>
     <ClInclude Include="GameMap.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game World</Filter>
+    </ClInclude>
+    <ClInclude Include="Coordinate.h">
+      <Filter>Header Files\Game World</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Header Files\Entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Tile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Material.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CsvReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Action.cpp">
@@ -167,14 +161,17 @@
     <ClCompile Include="XMLReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="pugixml.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Coordinate.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Source Files\Game World</Filter>
     </ClCompile>
     <ClCompile Include="GameMap.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game World</Filter>
+    </ClCompile>
+    <ClCompile Include="Coordinate.cpp">
+      <Filter>Source Files\Game World</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>Source Files\Entities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

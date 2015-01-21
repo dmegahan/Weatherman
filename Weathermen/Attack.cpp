@@ -11,7 +11,3 @@ Attack::Attack(Actor *user, Actor *target){
 	this->user = user;
 	this->target = target;
 }
-
-bool Attack::execute(){
-	return true;
-}

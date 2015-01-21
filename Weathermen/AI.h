@@ -31,7 +31,7 @@ public:
 
 	std::deque<array<int, 2>> aStarSearch(GameMap *map, int orig_x, int orig_y, int dest_x, int dest_y);
 	std::deque<array<int, 2>> make_path(map<array<int, 2>, array<int, 2>> came_from, array<int, 2> current);
-	int heuristic(int x1, int y1, int x2, int y2);
+	int heuristic(int x1, int y1, int x2, int y2){ return abs(x1 - x2) + abs(y1 - y2); }
 	array<int, 2> lowestScore(vector<array<int, 2>> open_set, map<array<int, 2>, int> scores);
 	
 	bool compare_ints(int i, int j);

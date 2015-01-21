@@ -12,9 +12,7 @@ protected:
 
 public:
 	Action();
-	virtual bool execute(){
-		return true;
-	}
+	virtual bool execute(){ return true; }
 };
 
 #endif

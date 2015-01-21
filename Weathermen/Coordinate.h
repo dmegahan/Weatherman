@@ -15,8 +15,8 @@ public:
 	Coordinate();
 	Coordinate(int x, int y);
 	
-	int getX();
-	int getY();
+	int getX(){ return this->x; }
+	int getY(){ return this->y; }
 };
 
 #endif

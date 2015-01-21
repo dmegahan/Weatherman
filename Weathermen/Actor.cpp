@@ -178,13 +178,8 @@ void Actor::applyStats(){
 void Actor::actionEffects(int energy_expended){
 	current_hunger = current_hunger - 1;
 	current_hunger = current_thirst - 1;
-
-
 }
 
-ItemContainer* Actor::getInventory(){
-	return inventory;
-}
 
 void Actor::applyDamage(int damage){
 	//use CON to determine damage actually taken

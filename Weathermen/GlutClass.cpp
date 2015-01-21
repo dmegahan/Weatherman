@@ -11,10 +11,6 @@ GlutClass::GlutClass(GameMap *_map){
 	map = _map;
 }
 
-void GlutClass::FreeTexture(GLuint texture){
-	glDeleteTextures(1, &texture);
-}
-
 void GlutClass::InitializeTiles(){
 	char text;
 	for (int y = 0; y < map->getSizeY(); y++){

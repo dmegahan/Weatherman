@@ -18,7 +18,7 @@ protected:
 public:
 	Attack();
 	Attack(Actor *user, Actor *target);
-	virtual bool execute();
+	virtual bool execute(){ return true; }
 };
 
 #endif

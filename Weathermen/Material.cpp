@@ -5,7 +5,6 @@
 #include <string>
 
 #include "Material.h"
-#include "CsvReader.h"
 
 using namespace std;
 
@@ -24,15 +23,6 @@ Material::Material(){
 }
 
 Material::Material(string mat_name){
-	CsvReader csvReader;
-	vector<string> fields = csvReader.findName("MATERIALS.csv", mat_name);
-	setName(fields[0]);
-	setDescription(fields[1]);
-	setType(fields[2]);
-	setColor(atof(fields[3].c_str()), 
-			 atof(fields[4].c_str()), 
-			 atof(fields[5].c_str()), 
-			 atof(fields[6].c_str()));
 }
 
 Material::Material(string name, string description, string type, int *color[4]){
@@ -48,7 +38,10 @@ void Material::setColor(float R, float G, float B, float A){
 	this->color[3] = A;
 }
 void Material::setColor(){
-
+	this->color[0] = 0;
+	this->color[1] = 0;
+	this->color[2] = 0;
+	this->color[3] = 0;
 }
 
 void Material::toString(){
