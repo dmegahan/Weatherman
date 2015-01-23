@@ -15,9 +15,9 @@ string getDescription();
 char getSymbol();
 
 Entity::Entity(){
-	setName("");
-	setDescription("");
-	setSymbol('%');
+	setName(DEFAULT_ITEM_NAME);
+	setDescription(DEFAULT_ITEM_DESCRIPTION);
+	setSymbol(DEFAULT_ITEM_SYMBOL);
 }
 
 Entity::Entity(string name, string description, string material, char symbol){

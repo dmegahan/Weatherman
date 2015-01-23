@@ -6,6 +6,8 @@
 
 #include "Item.h"
 
+#define DEFAULT_ITEM_SLOT "NA"
+
 using namespace std;
 /*
 	Basic parent class for equiptable items

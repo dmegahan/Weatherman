@@ -7,9 +7,9 @@
 using namespace std;
 
 Weapon::Weapon() : Equiptable(){
-	this->weapon_type = "NA";
-	this->attack = 1;
-	this->attack_speed = 0.1;
+	this->weapon_type = DEFAULT_WEAPON_TYPE;
+	this->attack = DEFAULT_ATTACK_VALUE;
+	this->attack_speed = DEFAULT_ATTACK_SPEED;
 }
 
 Weapon::Weapon(string name, string description, string material, char symbol, int weight,

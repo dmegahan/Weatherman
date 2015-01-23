@@ -7,7 +7,7 @@
 using namespace std;
 
 Equiptable::Equiptable() : Item(){
-	item_slot = "NA";
+	item_slot = DEFAULT_ITEM_SLOT;
 }
 
 Equiptable::Equiptable(string name, string description, string material, char symbol, int weight, string item_slot)

@@ -15,7 +15,7 @@ string getDescription();
 char getSymbol();
 
 Item::Item() : Entity(){
-	this->weight = 0;
+	this->weight = DEFAULT_WEIGHT_VALUE;
 }
 
 Item::Item(string name, string description, string material, char symbol, int weight) : 

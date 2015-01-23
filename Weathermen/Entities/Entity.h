@@ -5,6 +5,10 @@
 #include <iostream>
 #include "Material.h"
 
+#define DEFAULT_ITEM_NAME "default"
+#define DEFAULT_ITEM_DESCRIPTION "description"
+#define DEFAULT_ITEM_SYMBOL '%'
+
 using namespace std;
 
 class Entity{
@@ -13,7 +17,7 @@ private:
 	string item_description;
 	Material item_material;
 	char item_symbol;
-	int color[4];
+	float color[4];
 
 public:
 	Entity();
@@ -29,7 +33,7 @@ public:
 	string getDescription(){ return item_description; }
 	Material getMaterial(){ return item_material; }
 	char getSymbol(){ return item_symbol; }
-	int *getColor(){ return color; }
+	float *getColor(){ return color; }
 };
 
 #endif

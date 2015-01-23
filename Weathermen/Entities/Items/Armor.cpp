@@ -7,8 +7,8 @@
 using namespace std;
 
 Armor::Armor() : Equiptable(){
-	armor = 0;
-	type = "NA";
+	armor = DEFAULT_ARMOR_VALUE;
+	type = DEFAULT_ARMOR_TYPE;
 }
 
 Armor::Armor(string name, string description, string material, char symbol, 

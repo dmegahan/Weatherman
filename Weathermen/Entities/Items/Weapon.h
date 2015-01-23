@@ -6,6 +6,10 @@
 
 #include "Equiptable.h"
 
+#define DEFAULT_WEAPON_TYPE "NA"
+#define DEFAULT_ATTACK_VALUE 1
+#define DEFAULT_ATTACK_SPEED 0.1
+
 using namespace std;
 
 class Weapon : public Equiptable{

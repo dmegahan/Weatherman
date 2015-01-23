@@ -6,6 +6,9 @@
 
 #include "Equiptable.h"
 
+#define DEFAULT_ARMOR_TYPE "NA"
+#define DEFAULT_ARMOR_VALUE 1
+
 using namespace std;
 
 class Armor : public Equiptable{

@@ -6,6 +6,8 @@
 
 #include "../Entity.h"
 
+#define DEFAULT_WEIGHT_VALUE
+
 using namespace std;
 
 /*
