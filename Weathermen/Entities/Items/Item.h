@@ -6,7 +6,7 @@
 
 #include "../Entity.h"
 
-#define DEFAULT_WEIGHT_VALUE
+#define DEFAULT_WEIGHT_VALUE 1
 
 using namespace std;
 

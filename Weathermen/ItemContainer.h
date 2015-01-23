@@ -14,7 +14,7 @@ protected:
 	vector<Item*> inventory;
 public:
 	ItemContainer();
-	ItemContainer(vector<Item*>items);
+	explicit ItemContainer(vector<Item*>items);
 	~ItemContainer();
 
 	void addItems(vector<Item*>items);

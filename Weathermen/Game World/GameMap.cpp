@@ -15,7 +15,11 @@ GameMap::GameMap(int x, int y){
 }
 
 GameMap::~GameMap(){
-
+	for (int i = 0; i < q.size(); i++){
+		Action* action = q.front();
+		q.pop();
+		delete action;
+	}
 }
 
 void GameMap::createMap(){

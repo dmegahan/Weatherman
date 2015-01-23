@@ -26,7 +26,7 @@ public:
 	vector<Tile*> tiles_to_update;
 
 	GlutClass();
-	GlutClass(GameMap *_map);
+	explicit GlutClass(GameMap *_map);
 
 	void InitializeTiles();
 

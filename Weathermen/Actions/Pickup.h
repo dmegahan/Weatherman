@@ -8,7 +8,7 @@ class Pickup : public Action{
 private:
 	Tile *pos;
 public:
-	Pickup(Tile *pos);
+	explicit Pickup(Tile *pos);
 	~Pickup();
 	bool execute();
 };
