@@ -7,6 +7,7 @@
 #include "../Actors/Actor.h"
 #include "../Entities/Items/Item.h"
 #include "../Entities/Material.h"
+#include "Coordinate.h"
 
 using namespace std;
 
@@ -32,6 +33,8 @@ class Tile
 
 		Tile();
 		Tile(string type, string material, int height, string name, string description, bool passable);
+		~Tile();
+
 		void removeActor(Actor *actor);
 		bool hasActor(Actor *actor);
 		void removeItem(Item *item);

@@ -5,24 +5,6 @@
 #include "Tile.h"
 #include "../Actors/Actor.h"
 
-using namespace std;
-
-void setType(string type);
-void setPassable(bool passable);
-void setName(string tile_name);
-void setDescription(string tile_description);
-void setMaterial(string material);
-void setHeight(int tile_height);
-void addContains(Actor actor);
-
-vector<Actor> getContains();
-string getType();
-bool isPassable();
-string getName();
-string getDescription();
-string getMaterial();
-int getHeight();
-
 Tile::Tile(){
 	color.resize(4);
 	default_color.resize(4);
@@ -61,6 +43,21 @@ Tile::Tile(string type, string material, int height, string name, string descrip
 
 	VISIBLE = false;
 	discovered = false;
+}
+
+Tile::~Tile(){
+	//clean up contains_actors (vector of actor pointers)
+	for (std::vector<Actor*>::iterator it_actor = contains_actors.begin(); it_actor != contains_actors.end(); ++it_actor)
+	{
+		delete (*it_actor);
+	}
+	contains_actors.clear();
+	//clean up contains_items (vector of item pointers)
+	for (std::vector<Item*>::iterator it_item = contains_items.begin(); it_item != contains_items.end(); ++it_item)
+	{
+		delete (*it_item);
+	}
+	contains_items.clear();
 }
 
 void Tile::setColor(){
@@ -136,6 +133,10 @@ void Tile::removeItem(Item *item){
 }
 
 void Tile::removeAllItems(){
+	for (std::vector<Item*>::iterator it_item = contains_items.begin(); it_item != contains_items.end(); ++it_item)
+	{
+		delete (*it_item);
+	}
 	contains_items.clear();
 }
 

@@ -17,6 +17,10 @@ GameMap::GameMap(int x, int y){
 	}
 }
 
+GameMap::~GameMap(){
+
+}
+
 void GameMap::createMap(){
 	for (int i = 0; i < size_x; i++){
 		for (int j = 0; j < size_y; j++){
@@ -30,29 +34,29 @@ void GameMap::createMap(){
 	}
 }
 
-Tile* GameMap::getTileAtPos(int posx, int posy){
-	if (posx < size_x && posy < size_y && posx >= 0 && posy >= 0){
-		return &map[posy][posx];
+Tile* GameMap::getTileAtPos(Coordinate *pos){
+	if (pos->getX() < size_x && pos->getY() < size_y && pos->getX() >= 0 && pos->getY() >= 0){
+		return &map[pos->getY()][pos->getX()];
 	}
 	return nullptr;
 }
 
-bool GameMap::newMove(int orig_x, int orig_y, int dest_x, int dest_y){
-	Tile *orig = getTileAtPos(orig_x, orig_y);
-	Tile *dest = getTileAtPos(dest_x, dest_y);
+bool GameMap::newMove(Coordinate *orig, Coordinate *dest){
+	Tile *orig_tile = getTileAtPos(orig);
+	Tile *dest_tile = getTileAtPos(dest);
 
 	if (orig != nullptr && dest != nullptr){
-		q.push(new Move(orig, dest, dest_x, dest_y));
+		q.push(new Move(orig_tile, dest_tile, dest));
 		return true;
 	}
 	return false;
 }
 
-bool GameMap::newPickUp(int orig_x, int orig_y){
-	Tile *pos = getTileAtPos(orig_x, orig_y);
+bool GameMap::newPickUp(Coordinate *pos){
+	Tile *tile = getTileAtPos(pos);
 
-	if (pos != nullptr){
-		q.push(new Pickup(pos));
+	if (tile != nullptr){
+		q.push(new Pickup(tile));
 		return true;
 	}
 	return false;
@@ -61,7 +65,9 @@ bool GameMap::newPickUp(int orig_x, int orig_y){
 bool GameMap::newMeleeAttack(Actor* attacker, Actor* target){
 	
 	if (attacker != nullptr && target != nullptr){
-		bool adj = isAdjacent(attacker->x, attacker->y, target->x, target->y);
+		Coordinate *attack_pos = &attacker->pos;
+		Coordinate *target_pos = &target->pos;
+		bool adj = isAdjacent(attack_pos, target_pos);
 		if (adj){
 			q.push(new MeleeAttack(attacker, target));
 			return true;
@@ -73,9 +79,12 @@ bool GameMap::newMeleeAttack(Actor* attacker, Actor* target){
 void GameMap::executeQueue(){
 	//gruesome
 	bool result = false;
+	Action* action;
 	while (!q.empty()){
-		result = q.front()->execute();
+		action = q.front();
+		result = action->execute();
 		q.pop();
+		delete action;
 	}
 }
 
@@ -87,24 +96,24 @@ void GameMap::resetVisibility(){
 	}
 }
 
-bool GameMap::isAdjacent(int orig_x, int orig_y, int dest_x, int dest_y){
-	if (abs(orig_x - dest_x) == 1){
-		if (abs(orig_y - dest_y) == 0){
+bool GameMap::isAdjacent(Coordinate* orig, Coordinate* dest){
+	if (abs(orig->getX() - dest->getX()) == 1){
+		if (abs(orig->getY() - dest->getY()) == 0){
 			return true;
 		}
 	}
-	else if (abs(orig_x - dest_x) == 0){
-		if (abs(orig_y - dest_y) == 1){
+	else if (abs(orig->getX() - dest->getX()) == 0){
+		if (abs(orig->getY() - dest->getY()) == 1){
 			return true;
 		}
 	}
 	return false;
 }
 
-vector<array<int, 2>> GameMap::getNeighbors(int pos_x, int pos_y){
-	vector<array<int, 2>> neighbors;
+vector<Coordinate*> GameMap::getNeighbors(int pos_x, int pos_y){
+	vector<Coordinate*> neighbors;
+	int new_x, new_y = -1;
 	for (int i = 0; i < 3; i++){ //8 potential neighbors depending on location plus origin
-		int new_x, new_y = -1;
 		//assuming a point of 2,2 - there are 8 possible neighbors
 		//1,1 - 1,2 - 1,3 - 2,1 - 2,3 - 3,1 - 3,2 - 3,3
 		if (i % 3 == 0){
@@ -112,8 +121,7 @@ vector<array<int, 2>> GameMap::getNeighbors(int pos_x, int pos_y){
 			if (pos_x - 1 >= 0){
 				new_x = pos_x - 1;
 				new_y = pos_y;
-
-				neighbors.push_back({ { new_x, new_y } });
+				neighbors.push_back(new Coordinate(new_x, new_y));
 			}
 		}
 		else if (i % 3 == 1){
@@ -121,19 +129,19 @@ vector<array<int, 2>> GameMap::getNeighbors(int pos_x, int pos_y){
 
 			if (pos_y - 1 >= 0){
 				new_y = pos_y - 1;
-				neighbors.push_back({ { new_x, new_y } });
+				neighbors.push_back(new Coordinate(new_x, new_y));
 			}
 
 			if (pos_y + 1 < size_y){
 				new_y = pos_y + 1;
-				neighbors.push_back({ { new_x, new_y } });
+				neighbors.push_back(new Coordinate(new_x, new_y));
 			}
 		}
 		else if (i % 3 == 2){
 			if (pos_x + 1 < size_x){
 				new_x = pos_x + 1;
 				new_y = pos_y;
-				neighbors.push_back({ { new_x, new_y } });
+				neighbors.push_back(new Coordinate(new_x, new_y));
 			}
 		}
 	}

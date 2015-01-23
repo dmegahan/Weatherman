@@ -21,22 +21,32 @@ using namespace std;
 #define MAP_SIZEX 50
 #define MAP_SIZEY 50
 
-#define VIEW_RADIUS 5
+//default base offsets for drawing the map in the center of the screen
+#define DEFAULT_BASE_X_OFFSET 8
+#define DEFAULT_BASE_Y_OFFSET -6
+//offsets for the drawing when the view has reached a certain edge
+#define DEFAULT_LEFT_EDGE_X_OFFSET -5
+#define DEFAULT_RIGHT_EDGE_X_OFFSET -32
+#define DEFAULT_TOP_EDGE_Y_OFFSET 4
+#define DEFAULT_BOTTOM_EDGE_Y_OFFSET 34
+#define TRANSLATE_OFFSET -10
 
-int playerX, playerY;
+#define ENTER_KEY 13
+#define ESCAPE_KEY 27
+
 GameMap game_map;
 GlutClass glutClass;
+Coordinate *playerPos;
 vector<Actor*> all_actors;
 vector<AI*> all_AI;
+Actor *player;
+
 
 bool keyStates[256] = {false};
 
 void renderTile (Tile tile, char c, int posX, int posY);
 void keyOperations(void);
 
-Actor *player;
-
-int factor = 100;
 double dx;
 char exit_key = '~';
 
@@ -50,25 +60,25 @@ void display(){
 	glEnable(GL_TEXTURE_2D);
 	//glTranslatef(-5, 4, -10);
 	//x_offset and y_offset are used to keep the game_map centered in the middle of the screen
-	int x_offset = -playerX + 8; 
-	int y_offset = playerY - 6;
+	int x_offset = -playerPos->getX() + DEFAULT_BASE_X_OFFSET;
+	int y_offset = playerPos->getY() + DEFAULT_BASE_Y_OFFSET;
 
 	int view_range = 10;
 	//these if statements will be set to a default number if the edge of the game_map is seen, so no empty space is shown
-	if (playerX <= view_range){
-		x_offset = -5;
+	if (playerPos->getX() <= view_range){
+		x_offset = DEFAULT_LEFT_EDGE_X_OFFSET;
 	}
-	else if (playerX >= MAP_SIZEX - view_range){
-		x_offset = -32;
+	else if (playerPos->getX() >= MAP_SIZEX - view_range){
+		x_offset = DEFAULT_RIGHT_EDGE_X_OFFSET;
 	}
-	if (playerY <= view_range){
-		y_offset = 4;
+	if (playerPos->getY() <= view_range){
+		y_offset = DEFAULT_TOP_EDGE_Y_OFFSET;
 	}
-	else if (playerY >= MAP_SIZEY - view_range){
-		y_offset = 34;
+	else if (playerPos->getY() >= MAP_SIZEY - view_range){
+		y_offset = DEFAULT_BOTTOM_EDGE_Y_OFFSET;
 	}
 	//positioning where the tiles are drawn
-	glTranslatef(x_offset, y_offset, -10);
+	glTranslatef(x_offset, y_offset, TRANSLATE_OFFSET);
 	glutClass.drawTiles();
 	glutSwapBuffers();
 	glFlush();
@@ -90,10 +100,11 @@ void keyUp (unsigned char key, int x, int y){
 void DoFOV(float x, float y){
 	int i;
 	float ox, oy;
-	ox = (float)player->x + 0.5f;
-	oy = (float)player->y + 0.5f;
+	ox = (float)player->getPos()->getX() + 0.5f;
+	oy = (float)player->getPos()->getY() + 0.5f;
 	for (i = 0; i < player->view_radius; i++){
-		Tile* tile = game_map.getTileAtPos((int)ox, (int)oy);
+		Coordinate coord((int)ox, (int)oy);
+		Tile* tile = game_map.getTileAtPos(&coord);
 		if (tile != nullptr){
 			tile->VISIBLE = true;
 			tile->discovered = true;
@@ -114,7 +125,7 @@ void FOV(){
 	int i;
 	game_map.resetVisibility();
 	//used for drawing part of the game_map
-	glutClass.setPlayerPos(player->x, player->y);
+	glutClass.setPlayerPos(player->getPos()->getX(), player->getPos()->getX());
 	for (i = 0; i < 360; i++){
 		x = cos((float)i*0.01745f);
 		y = sin((float)i*0.01745f);
@@ -134,55 +145,55 @@ void AIActions(void *arg){
 }
 
 Tile* viewTiles(char exit_key){
-	Tile *last_tile = game_map.getTileAtPos(playerX, playerY);
+	Tile *last_tile = game_map.getTileAtPos(playerPos);
 	vector<float> color = last_tile->getDefaultColor();
 	last_tile->setColor(color[0], color[1], color[2], color[3]);
 	Tile *selected = nullptr;
 	if (keyStates['w']) {
-		playerX = playerX;
-		playerY = playerY - 1;
+		delete playerPos;
+		playerPos = new Coordinate(player->getPos()->getX(), player->getPos()->getY() - 1);
 		cout << "w pressed!";
 		//tile will be selected, recolor it until another tile is selected
-		selected = game_map.getTileAtPos(playerX, playerY);
+		selected = game_map.getTileAtPos(playerPos);
 		selected->setColor(255, 255, 0, 0);
 	}
 	else if (keyStates['a']){
-		playerX = playerX - 1;
-		playerY = playerY;
+		delete playerPos;
+		playerPos = new Coordinate(player->getPos()->getX() - 1, player->getPos()->getY());
 		cout << "a pressed!";
 		//tile will be selected, recolor it until another tile is selected
-		selected = game_map.getTileAtPos(playerX, playerY);
+		selected = game_map.getTileAtPos(playerPos);
 		selected->setColor(255, 255, 0, 0);
 	}
 	else if (keyStates['s']){
-		playerX = playerX;
-		playerY = playerY + 1;
+		delete playerPos;
+		playerPos = new Coordinate(player->getPos()->getX(), player->getPos()->getY() + 1);
 		cout << "s pressed!";
 		//tile will be selected, recolor it until another tile is selected
-		selected = game_map.getTileAtPos(playerX, playerY);
+		selected = game_map.getTileAtPos(playerPos);
 		selected->setColor(255, 255, 0, 0);
 	}
 	else if (keyStates['d']){
-		playerX = playerX + 1;
-		playerY = playerY;
+		delete playerPos;
+		playerPos = new Coordinate(player->getPos()->getX() + 1, player->getPos()->getY());
 		cout << "d pressed!";
 		//tile will be selected, recolor it until another tile is selected
-		selected = game_map.getTileAtPos(playerX, playerY);
+		selected = game_map.getTileAtPos(playerPos);
 		selected->setColor(255, 255, 0, 0);
 	}
 	else if (keyStates[exit_key]){
-		playerX = player->x;
-		playerY = player->y;
+		delete playerPos;
+		playerPos = new Coordinate(player->getPos()->getX(), player->getPos()->getY());
 		player->state = "normal";
 		cout << "%c pressed!", exit_key;
 	}
-	else if (keyStates[13]){
+	else if (keyStates[ENTER_KEY]){
 		//enter key pressed, select the tile, exit the state, and evaluate the selected tile
-		selected = game_map.getTileAtPos(playerX, playerY);
+		selected = game_map.getTileAtPos(playerPos);
 		vector<float> color = selected->getDefaultColor();
 		selected->setColor(color[0], color[1], color[2], color[3]);
-		playerX = player->x;
-		playerY = player->y;
+		delete playerPos;
+		playerPos = new Coordinate(player->getPos()->getX(), player->getPos()->getY());
 		player->state = "normal";
 		cout << "Enter pressed!";
 		return selected;
@@ -203,33 +214,36 @@ void keyOperations(void) {
 	bool valid_action = false;
 	if (player->state.compare("normal") == 0){
 		if (keyStates['w']) {
-			valid_action = game_map.newMove(player->x, player->y, player->x, player->y - 1);
+			Coordinate *dest = new Coordinate(playerPos->getX(), playerPos->getY() - 1);
+			valid_action = game_map.newMove(player->getPos(), dest);
 			player->actionEffects();
 			cout << "w pressed!";
 		}
 		else if (keyStates['a']){
-			valid_action = game_map.newMove(player->x, player->y, player->x - 1, player->y);
+			Coordinate *dest = new Coordinate(playerPos->getX() - 1, playerPos->getY());
+			valid_action = game_map.newMove(player->getPos(), dest);
 			player->actionEffects();
 			cout << "a pressed!";
 		}
 		else if (keyStates['s']){
-			valid_action = game_map.newMove(player->x, player->y, player->x, player->y + 1);
+			Coordinate *dest = new Coordinate(playerPos->getX(), playerPos->getY()+1);
+			valid_action = game_map.newMove(player->getPos(), dest);
 			player->actionEffects();
 			cout << "s pressed!";
 		}
 		else if (keyStates['d']){
-			valid_action = game_map.newMove(player->x, player->y, player->x + 1, player->y);
+			Coordinate *dest = new Coordinate(playerPos->getX() + 1, playerPos->getY());
+			valid_action = game_map.newMove(player->getPos(), dest);
 			player->actionEffects();
 			cout << "d pressed!";
 		}
 		else if (keyStates['e']){
-			valid_action = game_map.newPickUp(player->x, player->y);
+			valid_action = game_map.newPickUp(player->getPos());
 			player->actionEffects();
 		}
 		else if (keyStates['v']){
 			//initialize to player pos before calling view
-			playerX = player->x;
-			playerY = player->y;
+			playerPos = player->getPos();
 			//change state to view state
 			player->state = "view";
 			exit_key = 'v';
@@ -237,19 +251,33 @@ void keyOperations(void) {
 		}
 		else if (keyStates['k']){
 			//initialize to player pos before calling view
-			playerX = player->x;
-			playerY = player->y;
+			playerPos = player->getPos();
 			player->state = "cview";
 			exit_key = 'k';
 		}
 		else if (keyStates['z']){
 			cout << "z pressed!";
 		}
+		else if (keyStates[ESCAPE_KEY]){
+			printf("escape key pressed.");
+			delete playerPos;
+			delete player;
+			for (std::vector<Actor*>::iterator it = all_actors.begin(); it != all_actors.end(); ++it)
+			{
+				delete (*it);
+			}
+			all_actors.clear();
+			for (std::vector<AI*>::iterator it = all_AI.begin(); it != all_AI.end(); ++it)
+			{
+				delete (*it);
+			}
+			all_AI.clear();
+			//dirty exit(), need to find a way to exit the glutMainLoop
+		}
 
 		if (valid_action == true){
 			game_map.executeQueue();
-			playerX = player->x;
-			playerY = player->y;
+			playerPos = player->getPos();
 			HANDLE hThread = (HANDLE)_beginthread(AIActions, 0, 0);
 			FOV();
 		}
@@ -269,8 +297,7 @@ void keyOperations(void) {
 
 					if (valid_action){
 						game_map.executeQueue();
-						playerX = player->x;
-						playerY = player->y;
+						playerPos = player->getPos();
 						HANDLE hThread = (HANDLE)_beginthread(AIActions, 0, 0);
 						FOV();
 					}
@@ -297,8 +324,7 @@ int main(int argc, char **argv){
 
 	player = new Actor(1, 2, "PC", "Player Character", "PLAYER", '@');
 
-	playerX = player->x;
-	playerY = player->y;
+	playerPos = player->getPos();
 
 	//all_actors.push_back(player);
 
@@ -306,13 +332,14 @@ int main(int argc, char **argv){
 
 	glutClass.InitializeTiles();
 
-	game_map.getTileAtPos(playerX, playerY)->addActor(player);
-	game_map.getTileAtPos(0, 3)->spawnItem();
+	Coordinate coord1(0, 3);
+	game_map.getTileAtPos(playerPos)->addActor(player);
+	game_map.getTileAtPos(&coord1)->spawnItem();
 
 	Actor *test = new Actor(1, 1, "Dave", "Dave", "Dave", 'D');
 	AI *test_AI = new AI(test, &game_map);
 
-	game_map.getTileAtPos(test->x, test->y)->addActor(test);
+	game_map.getTileAtPos(test->getPos())->addActor(test);
 
 	all_actors.push_back(test);
 	all_AI.push_back(test_AI);
@@ -333,13 +360,15 @@ int main(int argc, char **argv){
 	Item* item1 = new Item("test1", "test1", "test1", 'U', 0);
 	Item* item2 = new Item("test2", "test2", "test2", 'X', 0);
 
-	game_map.getTileAtPos(1, 4)->addItem(item1);
-	game_map.getTileAtPos(1, 4)->addItem(item2);
+	Coordinate coord(1, 4);
+	game_map.getTileAtPos(&coord)->addItem(item1);
+	game_map.getTileAtPos(&coord)->addItem(item2);
 
 	XMLReader reader;
 	vector<Armor*> items = reader.readFile("Items.xml");
 
-	game_map.getTileAtPos(1, 6)->addItem(items[0]);
+	Coordinate coord2(1, 6);
+	game_map.getTileAtPos(&coord2)->addItem(items[0]);
 
 	FOV();
 

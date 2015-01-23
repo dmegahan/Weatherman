@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Pickup::Pickup(Tile *pos){
+Pickup::Pickup(Tile *pos) : Action(){
 	this->pos = pos;
 }
 

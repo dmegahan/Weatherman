@@ -15,7 +15,8 @@ void GlutClass::InitializeTiles(){
 	char text;
 	for (int y = 0; y < map->getSizeY(); y++){
 		for (int x = 0; x < map->getSizeX(); x++){
-			Tile *tile = map->getTileAtPos(x, y);
+			Coordinate *pos = new Coordinate(x, y);
+			Tile *tile = map->getTileAtPos(pos);
 			/*
 			if (tile->getType().compare("GRASS") == 0){
 				text = ',';
@@ -26,7 +27,8 @@ void GlutClass::InitializeTiles(){
 			*/
 			text = tile->current_character;
 			tile->VISIBLE = false;
-			renderTile(*tile, text, x, y);
+			renderTile(tile, text, x, y);
+			delete pos;
 		}
 	}
 }
@@ -57,37 +59,42 @@ void GlutClass::drawTiles(){
 	}
 	for (int y = min_range_y; y < max_range_y; y++){
 		for (int x = min_range_x; x < max_range_x; x++){
-			Tile *tile = map->getTileAtPos(x, y);
+			Coordinate *pos = new Coordinate(x, y);
+			Tile *tile = map->getTileAtPos(pos);
 			text = tile->current_character;
-			renderTile(*tile, text, x, y);
+			renderTile(tile, text, x, y);
+			delete pos;
 		}
 	}
 }
 
-void GlutClass::renderTile(Tile tile, char c, int posX, int posY){
+void GlutClass::renderTile(Tile *tile, char c, int posX, int posY){
 	/*
 		draw an individaul tile
 	*/
 	vector<float> color;
 	//if actor on tile and visible, change tile color to actors color and set symbol to actors symbol
-	if (!tile.isEmpty() && tile.VISIBLE){
-		Actor *actor = tile.getActors()[0];
+	if (!tile->isEmpty() && tile->VISIBLE){
+		Actor *actor = tile->getActors()[0];
 		color = actor->getColor();
 	}
 	else{
-		color = tile.getColor();
+		color = tile->getColor();
+	}
+	if (color.empty()){
+		color = { 0, 0, 0, 0 };
 	}
 	//color the tiles based on their color attributes
 	//draw as black if not discovered
-	if (!tile.discovered){
+	if (!tile->discovered){
 		glColor4f(0, 0, 0, 0);
 	}
 	//draw with full color
-	else if (tile.VISIBLE){
+	else if (tile->VISIBLE){
 		glColor4f(color[0], color[1], color[2], color[3]);
 	}
 	//if discovered but not visible, gray out the color
-	else if(!tile.VISIBLE){
+	else if(!tile->VISIBLE){
 		glColor4f(color[0]/2, color[1]/2, color[2]/2, color[3]/2);
 	}
 	//draw tile at this position

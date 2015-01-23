@@ -1,14 +1,9 @@
 #ifndef ATTACK_H
 #define ATTACK_H
 
-#include <stdio.h>
-#include <iostream>
 #include <time.h>
-
 #include "Action.h"
 #include "../Actors/Actor.h"
-
-using namespace std;
 
 class Attack : public Action{
 protected:
@@ -18,6 +13,8 @@ protected:
 public:
 	Attack();
 	Attack(Actor *user, Actor *target);
+	~Attack();
+
 	virtual bool execute(){ return true; }
 };
 

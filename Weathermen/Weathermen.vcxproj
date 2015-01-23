@@ -87,6 +87,7 @@
     <ClInclude Include="Actions\Pickup.h" />
     <ClInclude Include="Actors\Actor.h" />
     <ClInclude Include="AI\AI.h" />
+    <ClInclude Include="CsvReader.h" />
     <ClInclude Include="Entities\Entity.h" />
     <ClInclude Include="Entities\Items\Armor.h" />
     <ClInclude Include="Entities\Items\Equiptable.h" />
@@ -109,6 +110,7 @@
     <ClCompile Include="Actions\Pickup.cpp" />
     <ClCompile Include="Actors\Actor.cpp" />
     <ClCompile Include="AI\AI.cpp" />
+    <ClCompile Include="CsvReader.cpp" />
     <ClCompile Include="Entities\Entity.cpp" />
     <ClCompile Include="Entities\Items\Armor.cpp" />
     <ClCompile Include="Entities\Items\Equiptable.cpp" />

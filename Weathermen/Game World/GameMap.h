@@ -29,6 +29,7 @@ public:
 
 	GameMap();
 	GameMap(int x, int y);
+	~GameMap();
 
 	int getSizeX(){
 		return size_x;
@@ -40,13 +41,13 @@ public:
 
 	void createMap();
 	void drawTiles();
-	bool isAdjacent(int orig_x, int orig_y, int dest_x, int dest_y);
-	vector<array<int, 2>> getNeighbors(int pos_x, int pos_y);
+	bool isAdjacent(Coordinate* orig, Coordinate* dest);
+	vector<Coordinate*> getNeighbors(int pos_x, int pos_y);
 
-	Tile* getTileAtPos(int posx, int posy);
+	Tile* getTileAtPos(Coordinate *pos);
 
-	bool newMove(int orig_x, int orig_y, int dest_x, int dest_y);
-	bool newPickUp(int orig_x, int orig_y);
+	bool newMove(Coordinate *orig, Coordinate *dest);
+	bool newPickUp(Coordinate *pos);
 	bool newMeleeAttack(Actor *attacker, Actor* target);
 	void executeQueue();
 

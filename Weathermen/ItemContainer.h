@@ -15,11 +15,13 @@ protected:
 public:
 	ItemContainer();
 	ItemContainer(vector<Item*>items);
+	~ItemContainer();
 
 	void addItems(vector<Item*>items);
 
 	void removeItems(vector<Item*>items);
 	vector<Item*> removeAllItems();
+	void deleteAllItems();
 };
 
 #endif

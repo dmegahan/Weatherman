@@ -23,12 +23,31 @@ Material::Material(){
 }
 
 Material::Material(string mat_name){
+	CsvReader csvReader;
+	vector<string> fields = csvReader.findName("MATERIALS.csv", mat_name);
+	setName(fields[0]);
+	setDescription(fields[1]);
+	setType(fields[2]);
+	setColor(atof(fields[3].c_str()),
+		atof(fields[4].c_str()),
+		atof(fields[5].c_str()),
+		atof(fields[6].c_str()));
 }
 
-Material::Material(string name, string description, string type, int *color[4]){
-	setName(name);
+Material::Material(string mat_name, string description, string type, int *color[4]){
+	setName(mat_name);
 	setDescription(description);
 	setType(type);
+
+	CsvReader csvReader;
+	vector<string> fields = csvReader.findName("MATERIALS.csv", mat_name);
+	setName(fields[0]);
+	setDescription(fields[1]);
+	setType(fields[2]);
+	setColor(atof(fields[3].c_str()),
+		atof(fields[4].c_str()),
+		atof(fields[5].c_str()),
+		atof(fields[6].c_str()));
 }
 
 void Material::setColor(float R, float G, float B, float A){

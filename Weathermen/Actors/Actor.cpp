@@ -18,54 +18,44 @@ char getSymbol();
 Actor::Actor(){
 	color.resize(4);
 
-	setName("");
-	setDescription("");
-	setSymbol('%');
-	setType("Actor");
+	setName(DEFAULT_ACTOR_NAME);
+	setDescription(DEFAULT_ACTOR_DESCRIPTION);
+	setSymbol(DEFAULT_ACTOR_SYMBOL);
+	setType(DEFAULT_ACTOR_TYPE);
 	setColor();
 
-	base_stats = 28;
+	inventory = new ItemContainer();
+	state = DEFAULT_STATE;
+	base_stats = DEFAULT_POINTS_FOR_STATS;
+	view_radius = DEFAULT_VIEW_RADIUS;
 
-	view_radius = 5;
+	initializeStats();
+	randomizeStats(base_stats);
+}
+
+Actor::Actor(int x, int y) : pos(x, y){
+	color.resize(4);
+
+	setName(DEFAULT_ACTOR_NAME);
+	setDescription(DEFAULT_ACTOR_DESCRIPTION);
+	setSymbol(DEFAULT_ACTOR_SYMBOL);
+	setType(DEFAULT_ACTOR_TYPE);
+	setColor();
 
 	initializeStats();
 
 	inventory = new ItemContainer();
-	state = "normal";
-}
-
-Actor::Actor(int _x, int _y){
-	color.resize(4);
-
-	x = _x;
-	y = _y;
-
-	view_radius = 5;
-
-	setName("");
-	setDescription("");
-	setSymbol('%');
-	setType("Actor");
-	setColor();
-
-	//70 possible points, halve that - 7 gets 28. enough for 5s across the board
-	base_stats = 28;
+	state = DEFAULT_STATE;
+	base_stats = DEFAULT_POINTS_FOR_STATS;
+	view_radius = DEFAULT_VIEW_RADIUS;
 
 	initializeStats();
-
-	inventory = new ItemContainer();
-	state = "normal";
-
+	randomizeStats(base_stats);
 }
 
 
-Actor::Actor(int _x, int _y, string name, string description, string type, char symbol){
+Actor::Actor(int x, int y, string name, string description, string type, char symbol) : pos(x, y){
 	color.resize(4);
-
-	x = _x;
-	y = _y;
-
-	view_radius = 10;
 
 	setName(name);
 	setDescription(description);
@@ -73,24 +63,31 @@ Actor::Actor(int _x, int _y, string name, string description, string type, char 
 	setSymbol(symbol);
 	setColor();
 
-	base_stats = 28;
-
 	initializeStats();
 
-	randomizeStats(base_stats);
-
 	inventory = new ItemContainer();
-	state = "normal";
+	state = DEFAULT_STATE;
+	base_stats = DEFAULT_POINTS_FOR_STATS;
+	view_radius = DEFAULT_VIEW_RADIUS;
+
+	initializeStats();
+	randomizeStats(base_stats);
+}
+
+Actor::~Actor(){
+	delete inventory;
 }
 
 
 void Actor::setColor(){
 	if (this->getType().compare("PLAYER") == 0){
+		//blue
 		this->color[0] = 0;
 		this->color[1] = 0;
 		this->color[2] = 5;
 		this->color[3] = 0;
 	}else{
+		//red
 		this->color[0] = 5;
 		this->color[1] = 0;
 		this->color[2] = 0;
@@ -102,43 +99,36 @@ void Actor::setColor(){
 	Initialize stats to 1, the minimum stat value possible
 */
 void Actor::initializeStats(){
-	STR = 1;
-	CON = 1;
-	INT = 1;
-	AGI = 1;
-	DEX = 1;
-	CHR = 1;
-	PER = 1;
+	STR, CON, INT, AGI, DEX, CHR, PER = DEFAULT_STARTING_STAT;
 
-	current_hunger = 75;
-	current_thirst = 75;
-	current_health = 100;
+	current_hunger = DEFAULT_STARTING_HUNGER;
+	current_thirst = DEFAULT_STARTING_THIRST;
+	current_health = DEFAULT_STARTING_HEALTH;
 
-	max_hunger = 100;
-	max_thirst = 100;
-	max_health = 100;
+	max_hunger = DEFAULT_MAX_HUNGER;
+	max_thirst = DEFAULT_MAX_THIRST;
+	max_health = DEFAULT_MAX_HEALTH;
 }
 
 void Actor::randomizeStats(int max_points){
 	srand(time(NULL));
 
-	int number_of_stats = 7;
+	int number_of_stats = NUMBER_OF_STATS;
 	int spent_points = 0;
 
-	vector<int*>stats;
-	stats.push_back(&STR);
-	stats.push_back(&CON);
-	stats.push_back(&INT);
-	stats.push_back(&AGI);
-	stats.push_back(&DEX);
-	stats.push_back(&CHR);
-	stats.push_back(&PER);
+	vector<int*>stats = { &STR, &CON, &INT, &AGI, &DEX, &CHR, &PER };
 
-	while (spent_points != max_points){
+	while (spent_points < max_points){
 		int rand_stat = rand() % stats.size();
+		//add a random number of points form 1 - 2 to a random stat
 		int rand_points_given = rand() % 2 + 1;
 		//printf("Stat: %d, Points to be given: %d\n", rand_stat, rand_points_given);
+		if (stats.size() <= 0){
+			return;
+		}
+		//number of points in 1 stat cannot exceed 10
 		if ((*stats[rand_stat] + rand_points_given) <= 10){
+			//add the random number of points to the stat
 			*stats[rand_stat] = *stats[rand_stat] + rand_points_given;
 			spent_points = spent_points + rand_points_given;
 		}
@@ -150,22 +140,19 @@ void Actor::randomizeStats(int max_points){
 			spent_points = spent_points + rand_points_given - remainder;
 			stats.erase(stats.begin()+rand_stat);
 		}
-		if (stats.size() <= 0){
-			return;
-		}
 	}
 }
 
 void Actor::applyStats(){
 	//apply effects of stats 
 	//CON affects hunger, thirst, and health starting values;
-	current_health = (CON * 10) + current_health;
-	current_hunger = (CON * 2) + current_hunger;
-	current_thirst = (CON * 2) + current_thirst;
+	current_health = (CON * CURRENT_HEALTH_CON_MULTIPLIER) + current_health;
+	current_hunger = (CON * CURRENT_HUNGER_CON_MULTIPLIER) + current_hunger;
+	current_thirst = (CON * CURRENT_THIRST_CON_MULTIPLIER) + current_thirst;
 
-	max_health = (CON * 10) + max_health;
-	max_hunger = (CON * 5) + max_hunger;
-	max_thirst = (CON * 5) + max_thirst;
+	max_health = (CON * MAX_HEALTH_CON_MULTIPLIER) + max_health;
+	max_hunger = (CON * MAX_HUNGER_CON_MULTIPLIER) + max_hunger;
+	max_thirst = (CON * MAX_THIRST_CON_MULTIPLIER) + max_thirst;
 }
 
 /*
@@ -176,15 +163,15 @@ void Actor::applyStats(){
 	other status effectsThis 
 */
 void Actor::actionEffects(int energy_expended){
-	current_hunger = current_hunger - 1;
-	current_hunger = current_thirst - 1;
+	current_hunger = current_hunger - energy_expended;
+	current_hunger = current_thirst - energy_expended;
 }
 
 
 void Actor::applyDamage(int damage){
 	//use CON to determine damage actually taken
 	//this stat will reduce the damage by whatever % (currently 10 CON = 50% reduction)
-	float damage_reduction_multiplier = (this->CON) * 5;
+	float damage_reduction_multiplier = (this->CON) * DEFAULT_DAMAGE_REDUCTION_MULTIPLIER;
 	int true_damage = damage * (damage_reduction_multiplier / 100);
 
 	this->current_health = this->current_health - true_damage;

@@ -6,8 +6,11 @@ ItemContainer::ItemContainer(){
 	inventory.clear();
 }
 ItemContainer::ItemContainer(vector<Item*>items){
-	inventory.clear();	
 	addItems(items);
+}
+
+ItemContainer::~ItemContainer(){
+	deleteAllItems();
 }
 
 void ItemContainer::addItems(vector<Item*>items){
@@ -34,4 +37,14 @@ vector<Item*> ItemContainer::removeAllItems(){
 	inventory.clear();
 
 	return removed_items;
+}
+
+//delete the pointers in the item container
+void ItemContainer::deleteAllItems(){
+	//clean up contains_items (vector of item pointers)
+	for (std::vector<Item*>::iterator it_inv = inventory.begin(); it_inv != inventory.end(); ++it_inv)
+	{
+		delete (*it_inv);
+	}
+	inventory.clear();
 }

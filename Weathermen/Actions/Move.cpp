@@ -3,12 +3,19 @@
 
 using namespace std;
 
-Move::Move(Tile *_orig, Tile *_dest, int _dest_x, int _dest_y){
-	orig = _orig;
-	dest = _dest;
+Move::Move(Tile *orig, Tile *dest, Coordinate *coord) : Action()
+{
+	this->orig = orig;
+	this->dest = dest;
 
-	dest_x = _dest_x;
-	dest_y = _dest_y;
+	this->dest_x = coord->getX();
+	this->dest_y = coord->getY();
+
+	delete coord;
+}
+
+Move::~Move(){
+
 }
 
 bool Move::execute(){
@@ -33,8 +40,8 @@ bool Move::execute(){
 	orig->removeActor(actors[0]);
 	dest->addActor(actors[0]);
 
-	actors[0]->x = dest_x;
-	actors[0]->y = dest_y;
+	Coordinate *pos = new Coordinate(dest_x, dest_y);
+	actors[0]->pos = *pos;
 
 	return true;
 }

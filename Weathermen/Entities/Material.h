@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <iostream>
 
+#include "../CsvReader.h"
+
 using namespace std;
 
 class Material{
@@ -16,7 +18,7 @@ class Material{
 	public:
 		Material();
 		Material(string mat_name);
-		Material(string name, string description, string type, int *color[4]);
+		Material(string mat_name, string description, string type, int *color[4]);
 
 		void setName(string name){ material_name = name; }
 		void setDescription(string description){ material_description = description; }

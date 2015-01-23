@@ -1,17 +1,14 @@
 #ifndef ACTION_H
 #define ACTION_H
 
-#include <stdio.h>
-#include <iostream>
-
-using namespace std;
+#define DEFAULT_COST 1
 
 class Action{
 protected:
 	int cost;
-
 public:
 	Action();
+	//~Action();
 	virtual bool execute(){ return true; }
 };
 

@@ -1,10 +1,8 @@
 #include "Action.h"
 #include "Attack.h"
 
-using namespace std;
-
 Attack::Attack(){
-	cost = 1;
+	cost = DEFAULT_COST;
 }
 
 Attack::Attack(Actor *user, Actor *target){
