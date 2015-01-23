@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <iostream>
-
 #include "GameMap.h"
 
 GameMap::GameMap(){
@@ -37,6 +34,13 @@ void GameMap::createMap(){
 Tile* GameMap::getTileAtPos(Coordinate *pos){
 	if (pos->getX() < size_x && pos->getY() < size_y && pos->getX() >= 0 && pos->getY() >= 0){
 		return &map[pos->getY()][pos->getX()];
+	}
+	return nullptr;
+}
+
+Tile* GameMap::getTileAtPos(int x, int y){
+	if (x < size_x && y < size_y && x >= 0 && y >= 0){
+		return &map[x][y];
 	}
 	return nullptr;
 }
@@ -110,8 +114,8 @@ bool GameMap::isAdjacent(Coordinate* orig, Coordinate* dest){
 	return false;
 }
 
-vector<Coordinate*> GameMap::getNeighbors(int pos_x, int pos_y){
-	vector<Coordinate*> neighbors;
+vector<Coord> GameMap::getNeighbors(int pos_x, int pos_y){
+	vector<Coord> neighbors;
 	int new_x, new_y = -1;
 	for (int i = 0; i < 3; i++){ //8 potential neighbors depending on location plus origin
 		//assuming a point of 2,2 - there are 8 possible neighbors
@@ -121,7 +125,7 @@ vector<Coordinate*> GameMap::getNeighbors(int pos_x, int pos_y){
 			if (pos_x - 1 >= 0){
 				new_x = pos_x - 1;
 				new_y = pos_y;
-				neighbors.push_back(new Coordinate(new_x, new_y));
+				neighbors.push_back({ { new_x, new_y } });
 			}
 		}
 		else if (i % 3 == 1){
@@ -129,19 +133,19 @@ vector<Coordinate*> GameMap::getNeighbors(int pos_x, int pos_y){
 
 			if (pos_y - 1 >= 0){
 				new_y = pos_y - 1;
-				neighbors.push_back(new Coordinate(new_x, new_y));
+				neighbors.push_back({ { new_x, new_y } });
 			}
 
 			if (pos_y + 1 < size_y){
 				new_y = pos_y + 1;
-				neighbors.push_back(new Coordinate(new_x, new_y));
+				neighbors.push_back({ { new_x, new_y } });
 			}
 		}
 		else if (i % 3 == 2){
 			if (pos_x + 1 < size_x){
 				new_x = pos_x + 1;
 				new_y = pos_y;
-				neighbors.push_back(new Coordinate(new_x, new_y));
+				neighbors.push_back({ { new_x, new_y } });
 			}
 		}
 	}

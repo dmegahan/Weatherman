@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <queue>
+#include <process.h>
 
 #include "Game World/Tile.h"
 #include "Actors/Actor.h"
@@ -13,10 +13,6 @@
 #include "AI/AI.h"
 #include "ItemContainer.h"
 #include "XMLReader.h"
-
-#include <process.h>
-
-using namespace std;
 
 #define MAP_SIZEX 50
 #define MAP_SIZEY 50
@@ -41,13 +37,8 @@ vector<Actor*> all_actors;
 vector<AI*> all_AI;
 Actor *player;
 
-
 bool keyStates[256] = {false};
 
-void renderTile (Tile tile, char c, int posX, int posY);
-void keyOperations(void);
-
-double dx;
 char exit_key = '~';
 
 void display(){
@@ -88,15 +79,6 @@ void idle(){
 	glutPostRedisplay();
 }
 
-void keyPressed (unsigned char key, int x, int y){
-	keyStates[key] = true;
-	keyOperations();
-}
-
-void keyUp (unsigned char key, int x, int y){
-	keyStates[key] = false;
-}
-
 void DoFOV(float x, float y){
 	int i;
 	float ox, oy;
@@ -125,7 +107,7 @@ void FOV(){
 	int i;
 	game_map.resetVisibility();
 	//used for drawing part of the game_map
-	glutClass.setPlayerPos(player->getPos()->getX(), player->getPos()->getX());
+	glutClass.setPlayerPos(player->getPos()->getX(), player->getPos()->getY());
 	for (i = 0; i < 360; i++){
 		x = cos((float)i*0.01745f);
 		y = sin((float)i*0.01745f);
@@ -306,6 +288,15 @@ void keyOperations(void) {
 		}
 	}
 }	
+
+void keyPressed(unsigned char key, int x, int y){
+	keyStates[key] = true;
+	keyOperations();
+}
+
+void keyUp(unsigned char key, int x, int y){
+	keyStates[key] = false;
+}
 
 int main(int argc, char **argv){
 	game_map = GameMap(MAP_SIZEX, MAP_SIZEY);

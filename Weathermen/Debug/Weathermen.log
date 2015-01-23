@@ -1,4 +1,4 @@
-﻿Build started 1/22/2015 7:14:06 PM.
+﻿Build started 1/23/2015 6:56:10 AM.
      1>Project "C:\Users\Danny\Documents\Weatherman\Weathermen\Weathermen.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /FR"Debug\\" /Gd /TP /analyze- /errorReport:prompt Actions\Action.cpp Actions\Attack.cpp Actions\MeleeAttack.cpp Actions\Move.cpp Actions\Pickup.cpp Actors\Actor.cpp AI\AI.cpp CsvReader.cpp Entities\Entity.cpp Entities\Items\Armor.cpp Entities\Items\Equiptable.cpp Entities\Items\Item.cpp Entities\Items\Weapon.cpp Entities\Material.cpp "Game World\Coordinate.cpp" "Game World\GameMap.cpp" "Game World\Tile.cpp" GlutClass.cpp ItemContainer.cpp main.cpp XMLReader.cpp
@@ -9,10 +9,10 @@
                  c:\users\danny\documents\weatherman\weathermen\xmlreader.cpp(9) : see reference to function template instantiation 'rapidxml::file<char>::file(const char *)' being compiled
                  c:\users\danny\documents\weatherman\weathermen\xmlreader.cpp(9) : see reference to class template instantiation 'rapidxml::file<char>' being compiled
          main.cpp
-     1>c:\users\danny\documents\weatherman\weathermen\main.cpp(141): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\danny\documents\weatherman\weathermen\main.cpp(123): warning C4018: '<' : signed/unsigned mismatch
          ItemContainer.cpp
-     1>c:\users\danny\documents\weatherman\weathermen\itemcontainer.cpp(17): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\danny\documents\weatherman\weathermen\itemcontainer.cpp(23): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\danny\documents\weatherman\weathermen\itemcontainer.cpp(15): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\danny\documents\weatherman\weathermen\itemcontainer.cpp(21): warning C4018: '<' : signed/unsigned mismatch
          GlutClass.cpp
          Tile.cpp
      1>c:\users\danny\documents\weatherman\weathermen\game world\tile.cpp(93): warning C4018: '<' : signed/unsigned mismatch
@@ -36,7 +36,7 @@
      1>c:\users\danny\documents\weatherman\weathermen\entities\entity.cpp(35): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
          CsvReader.cpp
          AI.cpp
-     1>c:\users\danny\documents\weatherman\weathermen\ai\ai.cpp(77): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\danny\documents\weatherman\weathermen\ai\ai.cpp(79): warning C4018: '<' : signed/unsigned mismatch
          Actor.cpp
      1>c:\users\danny\documents\weatherman\weathermen\actors\actor.cpp(114): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
      1>c:\users\danny\documents\weatherman\weathermen\actors\actor.cpp(174): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
@@ -81,4 +81,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:21.57
+Time Elapsed 00:00:17.13

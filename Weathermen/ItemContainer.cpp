@@ -1,7 +1,5 @@
 #include "ItemContainer.h"
 
-using namespace std;
-
 ItemContainer::ItemContainer(){
 	inventory.clear();
 }

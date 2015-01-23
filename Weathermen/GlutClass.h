@@ -11,8 +11,11 @@
 
 using namespace std;
 
-#define draw_size_x 15
-#define draw_size_y 15
+#define DEFAULT_DRAW_RANGE 10
+//used in the glRasterPos3f (glut function call) in renderTile
+#define DEFAULT_RASTER_X_OFFSET -9
+#define DEFAULT_RASTER_Y_OFFSET 6
+#define DEFAULT_RASTER_Z -10
 
 class GlutClass{
 private:

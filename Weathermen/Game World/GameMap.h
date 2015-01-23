@@ -16,7 +16,7 @@
 #include "../Actions/MeleeAttack.h"
 #include "Tile.h"
 
-using namespace std;
+typedef std::array<int, 2> Coord;
 
 class GameMap{
 private:
@@ -42,9 +42,10 @@ public:
 	void createMap();
 	void drawTiles();
 	bool isAdjacent(Coordinate* orig, Coordinate* dest);
-	vector<Coordinate*> getNeighbors(int pos_x, int pos_y);
+	vector<Coord> getNeighbors(int pos_x, int pos_y);
 
 	Tile* getTileAtPos(Coordinate *pos);
+	Tile* getTileAtPos(int x, int y);
 
 	bool newMove(Coordinate *orig, Coordinate *dest);
 	bool newPickUp(Coordinate *pos);

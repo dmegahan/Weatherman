@@ -8,10 +8,11 @@ using namespace std;
 
 class Coordinate{
 private:
+
+public:
 	int x;
 	int y;
 
-public:
 	Coordinate();
 	Coordinate(int x, int y);
 	

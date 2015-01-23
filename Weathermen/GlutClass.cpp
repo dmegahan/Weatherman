@@ -40,7 +40,7 @@ void GlutClass::drawTiles(){
 	*/
 	char text;
 	//calculate the min and max draw range and only show those tile within those bounds
-	int draw_range = 10;
+	int draw_range = DEFAULT_DRAW_RANGE;
 	int min_range_y = player_y - draw_range;
 	if (min_range_y < 0){
 		min_range_y = 0;
@@ -81,9 +81,6 @@ void GlutClass::renderTile(Tile *tile, char c, int posX, int posY){
 	else{
 		color = tile->getColor();
 	}
-	if (color.empty()){
-		color = { 0, 0, 0, 0 };
-	}
 	//color the tiles based on their color attributes
 	//draw as black if not discovered
 	if (!tile->discovered){
@@ -98,7 +95,7 @@ void GlutClass::renderTile(Tile *tile, char c, int posX, int posY){
 		glColor4f(color[0]/2, color[1]/2, color[2]/2, color[3]/2);
 	}
 	//draw tile at this position
-	glRasterPos3f(posX - 9, -posY + 6, -10);
+	glRasterPos3f(posX + DEFAULT_RASTER_X_OFFSET, -posY + DEFAULT_RASTER_Y_OFFSET, DEFAULT_RASTER_Z);
 	glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, c);
 }
 
