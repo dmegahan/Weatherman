@@ -3,8 +3,10 @@
 
 #include "GlutClass.h"
 
-GlutClass::GlutClass(){
+GlutClass* g_CurrentInstance;
 
+GlutClass::GlutClass(){
+	g_CurrentInstance = this;
 }
 
 GlutClass::GlutClass(GameMap *_map){

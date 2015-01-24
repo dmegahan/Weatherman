@@ -1,9 +1,9 @@
-﻿Build started 1/23/2015 9:52:23 AM.
+﻿Build started 1/24/2015 6:10:07 AM.
      1>Project "C:\Users\Danny\Documents\Weatherman\Weathermen\Weathermen.vcxproj" on node 2 (Rebuild target(s)).
-     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppClean.targets(76,5): warning : The process cannot access the file 'c:\users\danny\documents\weatherman\weathermen\debug\attack.sbr' because it is being used by another process.
-     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppClean.targets(76,5): warning : The process cannot access the file 'c:\users\danny\documents\weatherman\weathermen\debug\coordinate.obj' because it is being used by another process.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppClean.targets(76,5): warning : The process cannot access the file 'c:\users\danny\documents\weatherman\weathermen\debug\coordinate.sbr' because it is being used by another process.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppClean.targets(76,5): warning : The process cannot access the file 'c:\users\danny\documents\weatherman\weathermen\debug\csvreader.obj' because it is being used by another process.
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /FR"Debug\\" /Gd /TP /analyze- /errorReport:prompt Actions\Action.cpp Actions\Attack.cpp Actions\MeleeAttack.cpp Actions\Move.cpp Actions\Pickup.cpp Actors\Actor.cpp AI\AI.cpp CsvReader.cpp Entities\Entity.cpp Entities\Items\Armor.cpp Entities\Items\Equiptable.cpp Entities\Items\Item.cpp Entities\Items\Weapon.cpp Entities\Material.cpp "Game World\Coordinate.cpp" "Game World\GameMap.cpp" "Game World\Tile.cpp" GlutClass.cpp ItemContainer.cpp main.cpp XMLReader.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /FR"Debug\\" /Gd /TP /analyze- /errorReport:prompt Actions\Action.cpp Actions\Attack.cpp Actions\MeleeAttack.cpp Actions\Move.cpp Actions\Pickup.cpp Actors\Actor.cpp AI\AI.cpp CsvReader.cpp Engine.cpp Entities\Entity.cpp Entities\Items\Armor.cpp Entities\Items\Equiptable.cpp Entities\Items\Item.cpp Entities\Items\Weapon.cpp Entities\Material.cpp "Game World\Coordinate.cpp" "Game World\GameMap.cpp" "Game World\Tile.cpp" GlutClass.cpp ItemContainer.cpp main.cpp XMLReader.cpp
          XMLReader.cpp
      1>c:\users\danny\documents\weatherman\weathermen\xmlreader.cpp(74): warning C4305: 'initializing' : truncation from 'double' to 'float'
      1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\rapidxml_utils.hpp(40): warning C4244: 'initializing' : conversion from 'std::streamoff' to 'size_t', possible loss of data
@@ -11,7 +11,6 @@
                  c:\users\danny\documents\weatherman\weathermen\xmlreader.cpp(9) : see reference to function template instantiation 'rapidxml::file<char>::file(const char *)' being compiled
                  c:\users\danny\documents\weatherman\weathermen\xmlreader.cpp(9) : see reference to class template instantiation 'rapidxml::file<char>' being compiled
          main.cpp
-     1>c:\users\danny\documents\weatherman\weathermen\main.cpp(123): warning C4018: '<' : signed/unsigned mismatch
          ItemContainer.cpp
      1>c:\users\danny\documents\weatherman\weathermen\itemcontainer.cpp(15): warning C4018: '<' : signed/unsigned mismatch
      1>c:\users\danny\documents\weatherman\weathermen\itemcontainer.cpp(21): warning C4018: '<' : signed/unsigned mismatch
@@ -33,6 +32,8 @@
          Equiptable.cpp
          Armor.cpp
          Entity.cpp
+         Engine.cpp
+     1>c:\users\danny\documents\weatherman\weathermen\engine.cpp(63): warning C4018: '<' : signed/unsigned mismatch
          CsvReader.cpp
          AI.cpp
      1>c:\users\danny\documents\weatherman\weathermen\ai\ai.cpp(79): warning C4018: '<' : signed/unsigned mismatch
@@ -46,9 +47,9 @@
      1>c:\users\danny\documents\weatherman\weathermen\actions\meleeattack.cpp(18): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
      1>c:\users\danny\documents\weatherman\weathermen\actions\meleeattack.cpp(29): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
      1>c:\users\danny\documents\weatherman\weathermen\actions\meleeattack.cpp(35): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
-         Attack.cpp
          Generating Code...
          Compiling...
+         Attack.cpp
          Action.cpp
          Generating Code...
        Link:
@@ -60,6 +61,7 @@
          Debug\Actor.obj
          Debug\AI.obj
          Debug\CsvReader.obj
+         Debug\Engine.obj
          Debug\Entity.obj
          Debug\Armor.obj
          Debug\Equiptable.obj
@@ -75,9 +77,9 @@
          Debug\XMLReader.obj
          Weathermen.vcxproj -> C:\Users\Danny\Documents\Weatherman\Debug\Weathermen.exe
        BscMake:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\bscmake.exe /nologo /o"C:\Users\Danny\Documents\Weatherman\Debug\Weathermen.bsc" /n Debug\Action.sbr Debug\Attack.sbr Debug\MeleeAttack.sbr Debug\Move.sbr Debug\Pickup.sbr Debug\Actor.sbr Debug\AI.sbr Debug\CsvReader.sbr Debug\Entity.sbr Debug\Armor.sbr Debug\Equiptable.sbr Debug\Item.sbr Debug\Weapon.sbr Debug\Material.sbr Debug\Coordinate.sbr Debug\GameMap.sbr Debug\Tile.sbr Debug\GlutClass.sbr Debug\ItemContainer.sbr Debug\main.sbr Debug\XMLReader.sbr
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\bscmake.exe /nologo /o"C:\Users\Danny\Documents\Weatherman\Debug\Weathermen.bsc" /n Debug\Action.sbr Debug\Attack.sbr Debug\MeleeAttack.sbr Debug\Move.sbr Debug\Pickup.sbr Debug\Actor.sbr Debug\AI.sbr Debug\CsvReader.sbr Debug\Engine.sbr Debug\Entity.sbr Debug\Armor.sbr Debug\Equiptable.sbr Debug\Item.sbr Debug\Weapon.sbr Debug\Material.sbr Debug\Coordinate.sbr Debug\GameMap.sbr Debug\Tile.sbr Debug\GlutClass.sbr Debug\ItemContainer.sbr Debug\main.sbr Debug\XMLReader.sbr
      1>Done Building Project "C:\Users\Danny\Documents\Weatherman\Weathermen\Weathermen.vcxproj" (Rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:17.34
+Time Elapsed 00:00:16.69
