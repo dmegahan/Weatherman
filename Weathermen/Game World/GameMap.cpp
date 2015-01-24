@@ -35,6 +35,16 @@ void GameMap::createMap(){
 	}
 }
 
+bool GameMap::validateCoordinate(Coordinate* coord){
+	if (coord->getX() < 0 || coord->getX() >= size_x){
+		return false;
+	}
+	if (coord->getY() < 0 || coord->getY() >= size_y){
+		return false;
+	}
+	return true;
+}
+
 Tile* GameMap::getTileAtPos(Coordinate *pos){
 	if (pos->getX() < size_x && pos->getY() < size_y && pos->getX() >= 0 && pos->getY() >= 0){
 		return &map[pos->getY()][pos->getX()];
@@ -53,7 +63,7 @@ bool GameMap::newMove(Coordinate *orig, Coordinate *dest){
 	Tile *orig_tile = getTileAtPos(orig);
 	Tile *dest_tile = getTileAtPos(dest);
 
-	if (orig != nullptr && dest != nullptr){
+	if (orig_tile != nullptr && dest_tile != nullptr){
 		q.push(new Move(orig_tile, dest_tile, dest));
 		return true;
 	}

@@ -72,39 +72,62 @@ Tile* Engine::viewTiles(char exit_key){
 	last_tile->setColor(color[0], color[1], color[2], color[3]);
 	Tile *selected = nullptr;
 	if (keyStates['w']) {
-		delete playerPos;
-		playerPos = new Coordinate(player->getPos()->getX(), player->getPos()->getY() - 1);
+		Coordinate* new_pos = new Coordinate(playerPos->getX(), playerPos->getY() - 1);
+		bool valid_pos = game_map.validateCoordinate(new_pos);
+		if (valid_pos == true){
+			playerPos = new Coordinate(playerPos->getX(), playerPos->getY() - 1);
+			delete new_pos;
+		}
 		cout << "w pressed!";
 		//tile will be selected, recolor it until another tile is selected
 		selected = game_map.getTileAtPos(playerPos);
-		selected->setColor(255, 255, 0, 0);
+		if (selected != nullptr){
+			selected->setColor(255, 255, 0, 0);
+		}
 	}
 	else if (keyStates['a']){
-		delete playerPos;
-		playerPos = new Coordinate(player->getPos()->getX() - 1, player->getPos()->getY());
+		Coordinate* new_pos = new Coordinate(playerPos->getX() - 1, playerPos->getY());
+		bool valid_pos = game_map.validateCoordinate(new_pos);
+		if (valid_pos == true){
+			playerPos = new Coordinate(playerPos->getX() - 1, playerPos->getY());
+			delete new_pos;
+		}
 		cout << "a pressed!";
 		//tile will be selected, recolor it until another tile is selected
 		selected = game_map.getTileAtPos(playerPos);
-		selected->setColor(255, 255, 0, 0);
+		if (selected != nullptr){
+			selected->setColor(255, 255, 0, 0);
+		}
 	}
 	else if (keyStates['s']){
-		delete playerPos;
-		playerPos = new Coordinate(player->getPos()->getX(), player->getPos()->getY() + 1);
+		Coordinate* new_pos = new Coordinate(playerPos->getX(), playerPos->getY() + 1);
+		bool valid_pos = game_map.validateCoordinate(new_pos);
+		if (valid_pos == true){
+			playerPos = new Coordinate(playerPos->getX(), playerPos->getY() + 1);
+			delete new_pos;
+		}
 		cout << "s pressed!";
 		//tile will be selected, recolor it until another tile is selected
 		selected = game_map.getTileAtPos(playerPos);
-		selected->setColor(255, 255, 0, 0);
+		if (selected != nullptr){
+			selected->setColor(255, 255, 0, 0);
+		}
 	}
 	else if (keyStates['d']){
-		delete playerPos;
-		playerPos = new Coordinate(player->getPos()->getX() + 1, player->getPos()->getY());
+		Coordinate* new_pos = new Coordinate(playerPos->getX() + 1, playerPos->getY());
+		bool valid_pos = game_map.validateCoordinate(new_pos);
+		if (valid_pos == true){
+			playerPos = new Coordinate(playerPos->getX() + 1, playerPos->getY());
+			delete new_pos;
+		}
 		cout << "d pressed!";
 		//tile will be selected, recolor it until another tile is selected
 		selected = game_map.getTileAtPos(playerPos);
-		selected->setColor(255, 255, 0, 0);
+		if (selected != nullptr){
+			selected->setColor(255, 255, 0, 0);
+		}
 	}
 	else if (keyStates[exit_key]){
-		delete playerPos;
 		playerPos = new Coordinate(player->getPos()->getX(), player->getPos()->getY());
 		player->state = DEFAULT_STATE;
 		cout << "%c pressed!", exit_key;
@@ -114,7 +137,6 @@ Tile* Engine::viewTiles(char exit_key){
 		selected = game_map.getTileAtPos(playerPos);
 		vector<float> color = selected->getDefaultColor();
 		selected->setColor(color[0], color[1], color[2], color[3]);
-		delete playerPos;
 		playerPos = new Coordinate(player->getPos()->getX(), player->getPos()->getY());
 		player->state = DEFAULT_STATE;
 		cout << "Enter pressed!";

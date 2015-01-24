@@ -47,6 +47,8 @@ public:
 	Tile* getTileAtPos(Coordinate *pos);
 	Tile* getTileAtPos(int x, int y);
 
+	bool validateCoordinate(Coordinate* coord);
+
 	bool newMove(Coordinate *orig, Coordinate *dest);
 	bool newPickUp(Coordinate *pos);
 	bool newMeleeAttack(Actor *attacker, Actor* target);
